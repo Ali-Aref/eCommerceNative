@@ -10,13 +10,14 @@ import Login from "./app/screens/Login";
 import AppBar from "./app/components/Appbar";
 import ChooseLanguage from "./app/screens/ChooseLanguage";
 import CC from "./app/screens/cc";
+import OnBoarding from "./app/screens/OnBoarding";
 
 export default function App() {
   return (
     <NativeBaseProvider>
       <SafeAreaView style={styles.safeArea}>
         <StatusBar barStyle="light-content" />
-        <ChooseLanguage />
+        <OnBoarding />
       </SafeAreaView>
     </NativeBaseProvider>
   );

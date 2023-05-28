@@ -46,7 +46,7 @@ const ChooseLanguage = () => {
           p="2"
           my="2"
           shadow={code === deviceLocale.langCode ? "5" : "1"}
-          flexDir={!isRTL ? "row-reverse" : "row"}
+          flexDir={isRTL ? "row-reverse" : "row"}
           alignItems="center"
           borderRadius={"md"}
         >
