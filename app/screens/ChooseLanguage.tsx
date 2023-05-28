@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Box, Button, Flex, Text, VStack } from "native-base";
-import { TouchableWithoutFeedback, I18nManager, } from "react-native";
+import { Avatar, Box, Button, Flex, Image, Text, VStack } from "native-base";
+import { I18nManager, ImageSourcePropType, Platform, TouchableWithoutFeedback } from "react-native";
 import { getLocales } from "expo-localization";
 
 import i18n from "../i18/i18n";
 
-const ChooseLanguage = (props: {}) => {
+const ChooseLanguage = () => {
+  
   const [deviceLocale, setDeviceLocale] = useState({
-    lang: getLocales()[0].languageCode,
-    dir: I18nManager.isRTL ? "rtl": "ltr",
+    langCode: getLocales()[0].languageCode,
+    isRTL: I18nManager.isRTL,
   });
 
   const languageItems = [
-    { label: "دری", code: "fa", icon: "", rtl: true },
-    { label: "پشتو", code: "ps", icon: "", rtl: true },
-    { label: "English", code: "en", icon: "" },
+    { label: "دری", code: "fa", icon: require("../assets/img/afg.png"), isRTL: true },
+    { label: "پشتو", code: "ps", icon: require("../assets/img/afg.png"), isRTL: true },
+    { label: "English", code: "en", icon: require("../assets/img/usa.png"), isRTL: false },
   ];
 
   const languageBox = ({
@@ -22,40 +23,34 @@ const ChooseLanguage = (props: {}) => {
     code,
     icon,
     key,
-    rtl = false,
+    isRTL = false,
   }: {
     label: string;
     code: string;
-    icon: string;
+    icon: ImageSourcePropType;
     key: any;
-    rtl?: boolean;
+    isRTL?: boolean;
   }) => {
     return (
       <TouchableWithoutFeedback
         key={key}
-        onPress={() =>{ 
+        onPress={() => {
           i18n.locale = code;
-          I18nManager.allowRTL(rtl)
-          I18nManager.forceRTL(rtl)
-          setDeviceLocale({ lang: code, dir: "ltr" })
-        }} 
+          I18nManager.allowRTL(isRTL);
+          I18nManager.forceRTL(isRTL);
+          setDeviceLocale({ langCode: code, isRTL });
+        }}
       >
         <Flex
-          bg={code === deviceLocale.lang ? "primary.50" : "secondary.50"}
-          p="5"
+          bg={code === deviceLocale.langCode ? "primary.50" : "secondary.50"}
+          p="2"
           my="2"
-          shadow={code === deviceLocale.lang ? "2": "7"}
-          flexDir={rtl ? "row-reverse" : "row"}
+          shadow={code === deviceLocale.langCode ? "5" : "1"}
+          flexDir={!isRTL ? "row-reverse" : "row"}
           alignItems="center"
           borderRadius={"md"}
         >
-          <Avatar
-            bg="gray.900"
-            source={{
-              uri:
-                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-            }}
-          />
+          <Image source={icon} borderRadius="none" size="sm" alt="logo" />
           <Text fontSize={"xl"} px="5">
             {label}
           </Text>
@@ -65,18 +60,28 @@ const ChooseLanguage = (props: {}) => {
   };
 
   return (
-    <Box h="full" p="10" justifyContent={"center"}>
-      <VStack px="5">
+    <Box h="full" px="10" justifyContent={"center"}>
+      <VStack px="5" >
+        <Image
+          w="220"
+          h="220"
+          alignSelf={"center"}
+          borderRadius="md"
+          alt="logo"
+          source={require("../assets/img/logo.png")}
+        />
+        <Text fontSize={"xl"} textAlign="center" color={"primary.900"}>
+          {i18n.t("Your slag here")}
+        </Text>
+        <Text fontSize={"xl"} my="2" textAlign="center" fontWeight={"bold"}>
+          {i18n.t("Choose your prefred language")}
+        </Text>
         {languageItems.map((i, k) => languageBox({ ...i, key: k }))}
         <Button size={"lg"} mt="3" shadow={"7"} colorScheme="primary">
-          <Text fontSize={"lg"} color="white">
-            {i18n.t("continue")}
+          <Text fontSize={"lg"} color="white" fontWeight={"bold"}>
+            {i18n.t("Continue")}
           </Text>
         </Button>
-        <Text>{deviceLocale.lang}</Text>
-        <Text>{getLocales()[0].languageCode}</Text>
-        <Text>is RTL: {String(I18nManager.isRTL)}</Text>
-        
       </VStack>
     </Box>
   );
