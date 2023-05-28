@@ -1,15 +1,13 @@
 import { getLocales } from "expo-localization";
 import { I18n } from "i18n-js";
 
-import fa from "./fa";
-import ps from "./ps";
+const en = require("./en.json")
+const fa = require("./fa.json")
+const ps = require("./ps.json")
 
 // Set the key-value pairs for the different languages you want to support.
 const i18n = new I18n({
-  en: {
-    continue: "continue",
-    check: "checking"
-  },
+  en,
   fa,
   ps,
 });
