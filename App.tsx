@@ -16,7 +16,7 @@ export default function App() {
     <NativeBaseProvider>
       <SafeAreaView style={styles.safeArea}>
         <StatusBar barStyle="light-content" />
-        <CC />
+        <ChooseLanguage />
       </SafeAreaView>
     </NativeBaseProvider>
   );
