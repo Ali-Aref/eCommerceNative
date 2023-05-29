@@ -1,30 +1,68 @@
-import { Box, Button, Text, Flex } from 'native-base';
+import { Box, Button, Text, Flex , FlatList, Image, Stack } from 'native-base';
 import React, { useRef, RefObject } from 'react'
+import { ImageSourcePropType, useWindowDimensions } from 'react-native';
+import ChooseLanguage from './ChooseLanguage';
+
+interface Slide {
+    title: string;
+    description: string;
+    img: ImageSourcePropType;
+}
 
 export default function OnBoarding() {
-  const pagerRef: RefObject<{ setPage: (pageNumber: number) => void }> | null = useRef(null);
-
-  const handlePageChange = (pageNumber: number) => {
-    pagerRef?.current?.setPage(pageNumber);
-  };
+  const slides: Slide[]  = [                
+    {
+        title: "First Page",
+        description: "The first page desc",
+        img: require("../assets/img/boarding/i1.png"),
+    },
+    {
+        title: "second page",
+        description: "the second page desc",
+        img: require("../assets/img/boarding/i2.png"),
+    }, 
+    {
+        title: "thrid page",
+        description: "the thrid page desc",
+        img: require("../assets/img/boarding/i3.png"),
+    }, 
+    {
+        title: "fourth page",
+        description: "the fourth page desc",
+        img: require("../assets/img/boarding/i4.png"),
+    }, 
+    ]
 
   return (
-    <Box flex={1} py="2">
-        <OnBoardingPage backgroundColor="lightgreen" title="GREEN PAGE" iconName="testicon" key={"1"}/>
-        <OnBoardingPage backgroundColor="lightblue" title="BLUE PAGE" iconName="testicon" key={"2"}/>
+    <Box flex={1}>
+        <FlatList 
+            data={slides} 
+            keyExtractor={(item)=> item.title}
+            renderItem={(({ item })=>(
+                <OnBoardingSlide  title={item.title} description={item.description} img={item.img} />
+            ))} 
+            horizontal
+            showsHorizontalScrollIndicator
+            bounces={false}
+        />
         <OnBoardingFooter />
     </Box>
   )
 }
 
-export function OnBoardingPage({ backgroundColor, iconName, title }:{
-    backgroundColor: string;
-    iconName: string;
+export function OnBoardingSlide({ backgroundColor="white", img, title, description }:{
+    backgroundColor?: string;
+    img: ImageSourcePropType;
     title: string;
+    description: string;
 }) {
-    return <Box alignItems={"center"} justifyContent={"center"} bg={backgroundColor} flex={1}>
-        <Text>Here is the page</Text>
-    </Box>
+    const { height, width } = useWindowDimensions()
+
+    return <Flex alignItems={"center"}  bg={backgroundColor} w={width} >
+        <Image source={img} w="full" resizeMode="contain"  flex={0.6} alt="img" />
+        <Text fontSize={"lg"} color={'primary.700'} fontWeight={"bold"}>{title}</Text>
+        <Text fontSize={"md"}>{description}</Text>
+    </Flex>
 
 }
 
