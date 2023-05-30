@@ -4,18 +4,22 @@ import {
   FlatList,
   Flex,
   HStack,
+  Icon,
+  IconButton,
   Image,
   Stack,
   Text,
   VStack,
 } from "native-base";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Animated,
   ImageSourcePropType,
   useWindowDimensions,
   View,
 } from "react-native";
+import Svg, { Circle, G } from "react-native-svg";
+import { AntDesign } from "@expo/vector-icons";
 
 interface Slide {
   title: string;
@@ -59,7 +63,7 @@ export default function OnBoarding() {
 
   return (
     <Box flex={1}>
-      <Box flex={4}>
+      <Box flex={3}>
         <FlatList
           flex={3}
           data={slides}
@@ -86,7 +90,7 @@ export default function OnBoarding() {
         />
       </Box>
       <Box flex={1}>
-        <OnBoardingFooter data={slides} scrollX={scrollX} />
+        <OnBoardingFooter data={slides} scrollX={scrollX} percentage={(currentIndex + 1) * (100 / slides.length)} />
       </Box>
     </Box>
   );
@@ -105,9 +109,9 @@ export function OnBoardingSlide({
 
   return (
     <Flex w={width} alignItems={"center"}>
-      <Image source={img} h="full" resizeMode="contain" alt="img" flex={7} />
+      <Image source={img} h="full" resizeMode="contain" alt="img" flex={4} />
       <Box alignItems={"center"} flex={1}>
-        <Text fontSize={"lg"} color={"primary.700"} fontWeight={"bold"}>
+        <Text fontSize={"xl"} color={"primary.700"} fontWeight={"bold"}>
           {title}
         </Text>
         <Text fontSize={"md"}>{description}</Text>
@@ -119,11 +123,44 @@ export function OnBoardingSlide({
 export function OnBoardingFooter({
   data,
   scrollX,
+  percentage,
 }: {
   data: Slide[];
   scrollX: Animated.Value;
+  percentage: number;
 }) {
   const { width } = useWindowDimensions();
+
+  const size = 110;
+  const strokWidth = 3;
+  const center = size / 2;
+  const radius = size / 2 - strokWidth / 2;
+  const circumference = 2 * Math.PI * radius;
+
+  const progressRef = useRef(null)
+  const progressAnimation = useRef(new Animated.Value(0)).current
+
+  const animation = (toValue: any) => {
+    return Animated.timing(progressAnimation, {
+      toValue,
+      duration: 20,
+      useNativeDriver: true,
+    }).start()
+  }
+
+  useEffect(()=>{
+    animation(percentage);
+  }, [percentage])
+
+  useEffect(()=>{
+    progressAnimation.addListener((val)=>{
+      const strokeDashoffset =  - (circumference * val.value) / 100     
+      if (progressRef?.current){
+        // progressRef.current.setNativeProps({ strokeDashoffset })
+        progressRef.current.setNativeProps({ strokeDashoffset })
+      }
+    })
+  }, [percentage])
 
   return (
     <Stack alignItems={"center"} space="xl">
@@ -149,9 +186,40 @@ export function OnBoardingFooter({
           );
         })}
       </Flex>
-      <Button w="20" h="20" borderRadius={"full"}>
-        Touchme
-      </Button>
+      <Svg width={size} height={size}>
+        <G rotation="-90" origin={center}>
+          <Circle
+            stroke={"gray"}
+            cx={center}
+            cy={center}
+            r={radius}
+            strokeWidth={strokWidth}
+          />
+          <Circle
+            ref={progressRef}
+            stroke={"red"}
+            cx={center}
+            cy={center}
+            r={radius}
+            strokeWidth={strokWidth}
+            strokeDasharray={circumference}
+            // strokeDashoffset={circumference - (circumference * 25) / 100}
+          />
+        </G>
+      </Svg>
+      <IconButton
+        top={"30%"}
+        // bg="primary.700"
+        position={"absolute"}
+        borderRadius="full"
+        icon={<Icon as={AntDesign} name="arrowright" color="black" />}
+        _icon={{
+          size:"6xl"
+        }}
+        onPress={() => {
+          // Handle button press
+        }}
+      />
     </Stack>
   );
 }

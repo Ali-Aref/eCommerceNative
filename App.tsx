@@ -15,10 +15,12 @@ import OnBoarding from "./app/screens/OnBoarding";
 export default function App() {
   return (
     <NativeBaseProvider>
+      <OnBoarding />
+      {/* 
       <SafeAreaView style={styles.safeArea}>
         <StatusBar barStyle="light-content" />
-        <OnBoarding />
       </SafeAreaView>
+      */}
     </NativeBaseProvider>
   );
 }

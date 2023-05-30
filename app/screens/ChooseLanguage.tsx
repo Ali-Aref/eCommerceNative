@@ -11,6 +11,8 @@ const ChooseLanguage = () => {
     langCode: getLocales()[0].languageCode,
     isRTL: I18nManager.isRTL,
   });
+  console.log("I18nManager.isRTL", I18nManager.isRTL)
+  console.log("deviceLocale.isRTL: ", deviceLocale.isRTL)
 
   const languageItems = [
     { label: "دری", code: "fa", icon: require("../assets/img/afg.png"), isRTL: true },
