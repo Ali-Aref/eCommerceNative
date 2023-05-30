@@ -11,7 +11,7 @@ import {
   Text,
   VStack,
 } from "native-base";
-import React, { useEffect, useRef, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import {
   Animated,
   ImageSourcePropType,
@@ -90,7 +90,11 @@ export default function OnBoarding() {
         />
       </Box>
       <Box flex={1}>
-        <OnBoardingFooter data={slides} scrollX={scrollX} percentage={(currentIndex + 1) * (100 / slides.length)} />
+        <OnBoardingFooter
+          data={slides}
+          scrollX={scrollX}
+          percentage={(currentIndex + 1) * (100 / slides.length)}
+        />
       </Box>
     </Box>
   );
@@ -137,30 +141,30 @@ export function OnBoardingFooter({
   const radius = size / 2 - strokWidth / 2;
   const circumference = 2 * Math.PI * radius;
 
-  const progressRef = useRef(null)
-  const progressAnimation = useRef(new Animated.Value(0)).current
+  const progressAnimation = useRef(new Animated.Value(0)).current;
+  const progressRef: RefObject<any> | null = useRef(null);
 
   const animation = (toValue: any) => {
     return Animated.timing(progressAnimation, {
       toValue,
-      duration: 20,
-      useNativeDriver: true,
-    }).start()
-  }
+      duration: 250,
+      useNativeDriver: false,
+    }).start();
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     animation(percentage);
-  }, [percentage])
 
-  useEffect(()=>{
-    progressAnimation.addListener((val)=>{
-      const strokeDashoffset =  - (circumference * val.value) / 100     
-      if (progressRef?.current){
-        // progressRef.current.setNativeProps({ strokeDashoffset })
-        progressRef.current.setNativeProps({ strokeDashoffset })
+    progressAnimation.addListener((val) => {
+      const strokeDashoffset = circumference -
+        (circumference * val.value) / 100;
+      if (progressRef?.current) {
+        progressRef["current"].setNativeProps({
+          strokeDashoffset: strokeDashoffset,
+        });
       }
-    })
-  }, [percentage])
+    });
+  }, [percentage]);
 
   return (
     <Stack alignItems={"center"} space="xl">
@@ -203,7 +207,7 @@ export function OnBoardingFooter({
             r={radius}
             strokeWidth={strokWidth}
             strokeDasharray={circumference}
-            // strokeDashoffset={circumference - (circumference * 25) / 100}
+          // strokeDashoffset={circumference - (circumference * 25) / 100}
           />
         </G>
       </Svg>
@@ -214,7 +218,7 @@ export function OnBoardingFooter({
         borderRadius="full"
         icon={<Icon as={AntDesign} name="arrowright" color="black" />}
         _icon={{
-          size:"6xl"
+          size: "6xl",
         }}
         onPress={() => {
           // Handle button press
