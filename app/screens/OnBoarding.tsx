@@ -14,6 +14,7 @@ import {
 import React, { RefObject, useEffect, useRef, useState } from "react";
 import {
   Animated,
+  GestureResponderEvent,
   ImageSourcePropType,
   useWindowDimensions,
   View,
@@ -37,6 +38,14 @@ export default function OnBoarding() {
       setCurrentIndex(viewableItems[0].index);
     },
   ).current;
+
+  const scrollTo = () => {
+    if (currentIndex < slides.length -1 && slideRef !== null){
+      slideRef?.current.scrollToIndex({ index: currentIndex + 1 })
+    } else {
+      console.log("last slide!")
+    }
+  }
 
   const slides: Slide[] = [
     {
@@ -93,6 +102,7 @@ export default function OnBoarding() {
         <OnBoardingFooter
           data={slides}
           scrollX={scrollX}
+          scrollTo={scrollTo}
           percentage={(currentIndex + 1) * (100 / slides.length)}
         />
       </Box>
@@ -127,16 +137,18 @@ export function OnBoardingSlide({
 export function OnBoardingFooter({
   data,
   scrollX,
+  scrollTo,
   percentage,
 }: {
   data: Slide[];
   scrollX: Animated.Value;
+  scrollTo: any;
   percentage: number;
 }) {
   const { width } = useWindowDimensions();
 
   const size = 110;
-  const strokWidth = 3;
+  const strokWidth = 2;
   const center = size / 2;
   const radius = size / 2 - strokWidth / 2;
   const circumference = 2 * Math.PI * radius;
@@ -147,7 +159,7 @@ export function OnBoardingFooter({
   const animation = (toValue: any) => {
     return Animated.timing(progressAnimation, {
       toValue,
-      duration: 250,
+      duration: 300,
       useNativeDriver: false,
     }).start();
   };
@@ -212,17 +224,15 @@ export function OnBoardingFooter({
         </G>
       </Svg>
       <IconButton
-        top={"30%"}
-        // bg="primary.700"
+        top={"16"}
+        bg="red.500"
         position={"absolute"}
         borderRadius="full"
-        icon={<Icon as={AntDesign} name="arrowright" color="black" />}
+        icon={<Icon as={AntDesign} name="arrowright" color="white" />}
         _icon={{
-          size: "6xl",
+          size: "4xl",
         }}
-        onPress={() => {
-          // Handle button press
-        }}
+        onPress={scrollTo}
       />
     </Stack>
   );
