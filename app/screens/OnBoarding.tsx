@@ -61,6 +61,12 @@ export default function OnBoarding() {
 
   const slides: Slide[] = [
     {
+      title: "Welcome",
+      description:
+        "Welcome to the biggest E-Commerce application of Afghanistan.",
+      img: require("../assets/img/boarding/undraw_Partying_re_at7f.png"),
+    },
+    {
       title: "Choose Product",
       description:
         "We have 100K+ Products. Choose your product from our E-Commerce shop.",
