@@ -5,6 +5,7 @@ import {
   StatusBar,
 } from "native-base";
 import { en, fa, ps } from "./app/i18/en"
+import theme from "./theme"
 
 import Login from "./app/screens/Login";
 import AppBar from "./app/components/Appbar";
@@ -14,7 +15,7 @@ import OnBoarding from "./app/screens/OnBoarding";
 
 export default function App() {
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={theme}>
       <OnBoarding />
       {/* 
       <SafeAreaView style={styles.safeArea}>
@@ -32,3 +33,4 @@ const styles = StyleSheet.create({
     // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
+
