@@ -11,7 +11,13 @@ import {
   Text,
   VStack,
 } from "native-base";
-import React, { RefObject, useEffect, useRef, useState } from "react";
+import React, {
+  ReactNode,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   Animated,
   GestureResponderEvent,
@@ -21,6 +27,7 @@ import {
 } from "react-native";
 import Svg, { Circle, G } from "react-native-svg";
 import { AntDesign } from "@expo/vector-icons";
+import { colors } from "../../theme";
 
 interface Slide {
   title: string;
@@ -40,12 +47,14 @@ export default function OnBoarding() {
   ).current;
 
   const scrollTo = () => {
-    if (currentIndex < slides.length -1 && slideRef !== null){
-      slideRef?.current.scrollToIndex({ index: currentIndex + 1 })
+    if (currentIndex < slides.length - 1 && slideRef !== null) {
+      (slideRef as React.RefObject<any>)?.current.scrollToIndex({
+        index: currentIndex + 1,
+      });
     } else {
-      console.log("last slide!")
+      console.log("last slide!");
     }
-  }
+  };
 
   const slides: Slide[] = [
     {
@@ -194,7 +203,7 @@ export function OnBoardingFooter({
               style={{
                 height: 10,
                 borderRadius: 5,
-                backgroundColor: "#333",
+                backgroundColor: colors.primary[900],
                 marginHorizontal: 4,
                 width: dotWidth,
               }}
@@ -205,7 +214,7 @@ export function OnBoardingFooter({
       <Svg width={size} height={size}>
         <G rotation="-90" origin={center}>
           <Circle
-            stroke={"gray"}
+            stroke={colors.primary[50]}
             cx={center}
             cy={center}
             r={radius}
@@ -213,7 +222,7 @@ export function OnBoardingFooter({
           />
           <Circle
             ref={progressRef}
-            stroke={"red"}
+            stroke={colors.primary[900]}
             cx={center}
             cy={center}
             r={radius}
@@ -225,7 +234,7 @@ export function OnBoardingFooter({
       </Svg>
       <IconButton
         top={"16"}
-        bg="red.500"
+        bg={colors.primary[900]}
         position={"absolute"}
         borderRadius="full"
         icon={<Icon as={AntDesign} name="arrowright" color="white" />}
