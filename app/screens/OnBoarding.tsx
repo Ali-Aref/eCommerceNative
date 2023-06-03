@@ -33,6 +33,7 @@ interface Slide {
   title: string;
   description: string;
   img: ImageSourcePropType;
+  external?: ReactNode;
 }
 
 export default function OnBoarding() {
@@ -47,10 +48,12 @@ export default function OnBoarding() {
   ).current;
 
   const scrollTo = () => {
-    if (currentIndex < slides.length - 1 && slideRef !== null) {
+    if (currentIndex < slides.length - 1) {
+      // slideRef?.current.scrollToIndex({
       (slideRef as React.RefObject<any>)?.current.scrollToIndex({
         index: currentIndex + 1,
       });
+      setCurrentIndex((old) => old + 1); // for after 5th slide
     } else {
       console.log("last slide!");
     }
@@ -58,24 +61,26 @@ export default function OnBoarding() {
 
   const slides: Slide[] = [
     {
-      title: "First Page",
-      description: "The first page desc",
-      img: require("../assets/img/boarding/i1.png"),
+      title: "Choose Product",
+      description:
+        "We have 100K+ Products. Choose your product from our E-Commerce shop.",
+      img: require("../assets/img/boarding/undraw_shopping_app_flsj.png"),
     },
     {
-      title: "second page",
-      description: "the second page desc",
-      img: require("../assets/img/boarding/i2.png"),
+      title: "Easy Payment",
+      description:
+        "Easy checkout and safe payment methods. Trusted by our customers from all over the world.",
+      img: require("../assets/img/boarding/undraw_Credit_card_payment_re_o911.png"),
     },
     {
-      title: "third page",
-      description: "the third page desc",
-      img: require("../assets/img/boarding/i3.png"),
+      title: "Fast Delivery",
+      description: "Reliable And Fast Delivery. We Deliver your product the fastest way possible.",
+      img: require("../assets/img/boarding/undraw_Deliveries_2r4y.png"),
     },
     {
-      title: "fourth page",
-      description: "the fourth page desc",
-      img: require("../assets/img/boarding/i4.png"),
+      title: "Sell Items",
+      description: "Sell items you don't need anymore and find seconded hand needed items.",
+      img: require("../assets/img/boarding/undraw_Shopping_re_hdd9.png"),
     },
   ];
 
@@ -128,16 +133,18 @@ export function OnBoardingSlide({
   title: string;
   description: string;
 }) {
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   return (
     <Flex w={width} alignItems={"center"}>
       <Image source={img} h="full" resizeMode="contain" alt="img" flex={4} />
-      <Box alignItems={"center"} flex={1}>
+      <Box alignItems={"center"} flex={1} px="10">
         <Text fontSize={"xl"} color={"primary.700"} fontWeight={"bold"}>
           {title}
         </Text>
-        <Text fontSize={"md"}>{description}</Text>
+        <Text fontSize={"md"} textAlign="center">
+          {description}
+        </Text>
       </Box>
     </Flex>
   );
