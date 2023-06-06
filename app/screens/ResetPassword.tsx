@@ -11,19 +11,14 @@ import {
 import { useState } from "react";
 import i18n from "../i18/i18n";
 import { Feather } from "@expo/vector-icons";
+import { AuthPagesLogo } from "../components/AuthPagesLogo";
 
 const ResetPassword = () => {
   const [showpassword, setshowpassword] = useState(false);
 
   return (
     <Flex justifyContent={"space-evenly"} alignItems="center" flex={1}>
-      <Image
-        resizeMode="contain"
-        w="200"
-        h="200"
-        source={require("../assets/img/logo2.png")}
-        alt="logo"
-      />
+      <AuthPagesLogo />
       <Box padding={10} w="full">
         <Text fontSize={"lg"}>{i18n.t("New Password")}</Text>
         <Input

@@ -1,16 +1,11 @@
 import { Box, Button, Flex, Image, Input, Text } from "native-base";
+import { AuthPagesLogo } from "../components/AuthPagesLogo";
 import i18n from "../i18/i18n";
 
 const VerificationCode = () => {
   return (
     <Flex justifyContent={"space-evenly"} alignItems="center" flex={1}>
-      <Image
-        resizeMode="contain"
-        w="200"
-        h="200"
-        source={require("../assets/img/logo2.png")}
-        alt="logo"
-      />
+      <AuthPagesLogo />
       <Box padding={10} w="full">
         <Text fontSize={"lg"}>{i18n.t("Verification Code")}</Text>
         <Input fontSize={"lg"} mt="1" w="full" keyboardType="number-pad" />

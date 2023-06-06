@@ -1,16 +1,11 @@
 import { Flex, Image, Text, Box, Input, Button } from "native-base";
+import { AuthPagesLogo } from "../components/AuthPagesLogo";
 import i18n from "../i18/i18n";
 
 const ForgotPassword = () => {
 	return (
 		<Flex justifyContent={"space-evenly"} alignItems="center" flex={1}>
-			<Image
-				resizeMode="contain"
-				w="200"
-				h="200"
-				source={require("../assets/img/logo2.png")}
-        alt="logo"
-			/>
+      <AuthPagesLogo />
 			<Box padding={10} w="full" >
 				<Text fontSize={"lg"}>
 					{i18n.t("Username or Email")}
