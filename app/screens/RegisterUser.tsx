@@ -20,11 +20,7 @@ const RegisterUser = () => {
   return (
     <Flex flex="1">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <Flex
-          flex={1}
-          justifyContent={"space-evenly"}
-          alignItems="center"
-        >
+        <Flex flex={1} justifyContent={"space-evenly"} alignItems="center">
           <AuthPagesLogo />
           <Box padding={10} w="full">
             <Text fontSize={"lg"}>{i18n.t("Username")}</Text>
