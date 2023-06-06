@@ -16,7 +16,7 @@ const i18n = new I18n({
 // Set the locale once at the beginning of your app.
 // i18n.locale = getLocales()[0].languageCode;
 
-if (!false){
+if (false){
   i18n.locale = "fa";
   I18nManager.allowRTL(!false);
   I18nManager.forceRTL(!false);

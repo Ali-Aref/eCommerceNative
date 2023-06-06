@@ -14,6 +14,8 @@
   "welcome": "welcome",
   "Continue": "Continue",
 
+
+  "Submit": "Submit",
   "authpages": "____auth____pages",
   "Username": "Username",
   "Password": "Password",
@@ -24,6 +26,8 @@
   "Send Reset Link": "Send Reset Link",
   "Verify": "Verify",
   "Verification Code": "Verification Code",
+  "New Password": "New Password",
+  "Confirm Your Password": "Confirm Your Password",
   
 
 
