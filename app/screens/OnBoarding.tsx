@@ -28,6 +28,8 @@ import {
 import Svg, { Circle, G } from "react-native-svg";
 import { AntDesign } from "@expo/vector-icons";
 import { colors } from "../../theme";
+import { LanguageSilde } from "../components/LanguageSilde";
+import i18n from "../i18/i18n";
 
 interface Slide {
   title: string;
@@ -61,31 +63,37 @@ export default function OnBoarding() {
 
   const slides: Slide[] = [
     {
-      title: "Welcome",
+      title: "",
+      description: "",
+      img: require("../assets/img/boarding/undraw_Partying_re_at7f.png"),
+      external: <LanguageSilde />
+    },
+    {
+      title: i18n.t("Welcome"),
       description:
-        "Welcome to the biggest E-Commerce application of Afghanistan.",
+        i18n.t("Welcome to the biggest E-Commerce application of Afghanistan."),
       img: require("../assets/img/boarding/undraw_Partying_re_at7f.png"),
     },
     {
-      title: "Choose Product",
+      title: i18n.t("Choose Product"),
       description:
-        "We have 100K+ Products. Choose your product from our E-Commerce shop.",
+        i18n.t("We have 100K+ Products. Choose your product from our E-Commerce shop."),
       img: require("../assets/img/boarding/undraw_shopping_app_flsj.png"),
     },
     {
-      title: "Easy Payment",
+      title: i18n.t("Easy Payment"),
       description:
-        "Easy checkout and safe payment methods. Trusted by our customers from all over the world.",
+        i18n.t("Easy checkout and safe payment methods. Trusted by our customers from all over the world."),
       img: require("../assets/img/boarding/undraw_Credit_card_payment_re_o911.png"),
     },
     {
-      title: "Fast Delivery",
-      description: "Reliable And Fast Delivery. We Deliver your product the fastest way possible.",
+      title: i18n.t("Fast Delivery"),
+      description: i18n.t("Reliable And Fast Delivery. We Deliver your product the fastest way possible."),
       img: require("../assets/img/boarding/undraw_Deliveries_2r4y.png"),
     },
     {
-      title: "Sell Items",
-      description: "Sell items you don't need anymore and find seconded hand needed items.",
+      title: i18n.t("Sell Items"),
+      description: i18n.t("Sell items you don't need anymore and find seconded hand needed items."),
       img: require("../assets/img/boarding/undraw_Shopping_re_hdd9.png"),
     },
   ];
@@ -98,6 +106,7 @@ export default function OnBoarding() {
           data={slides}
           keyExtractor={(item) => item.title}
           renderItem={({ item }) => (
+            item.external ? <>{item.external}</> :
             <OnBoardingSlide
               title={item.title}
               description={item.description}
