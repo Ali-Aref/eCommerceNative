@@ -12,5 +12,18 @@
   
   "Your slag here": "Your slag here",
   "welcome": "welcome",
-  "Continue": "Continue"
+  "Continue": "Continue",
+
+  "authpages": "____auth____pages",
+  "Username": "Username",
+  "Password": "Password",
+  "Username or Email": "Username or Email",
+  "Find Account": "Find Account",
+  "Create New Account": "Create New Account",
+  "Login": "Login",
+
+
+
+
+  "end": "____end"
 }

@@ -10,20 +10,20 @@ import CC from "./app/screens/cc";
 import OnBoarding from "./app/screens/OnBoarding";
 import i18n from "./app/i18/i18n";
 import { useLocale } from "./app/store/useLocale";
+import ForgotPassword from "./app/screens/ForgotPassword";
 
 export default function App() {
-  const { languageCode, isRtl } = useLocale();
+  // const { languageCode, isRtl } = useLocale();
 
-  
-  useEffect(() => {
-    i18n.locale = languageCode;
-    I18nManager.allowRTL(isRtl);
-    I18nManager.forceRTL(isRtl);
-  }, [languageCode]);
+  // useEffect(() => {
+  //   i18n.locale = languageCode;
+  //   I18nManager.allowRTL(isRtl);
+  //   I18nManager.forceRTL(isRtl);
+  // }, [languageCode]);
 
   return (
     <NativeBaseProvider theme={theme}>
-      <OnBoarding />
+      {/*<OnBoarding />*/}
       {
         /*
       <SafeAreaView style={styles.safeArea}>
@@ -31,6 +31,8 @@ export default function App() {
       </SafeAreaView>
       */
       }
+      {/*<ForgotPassword />*/}
+      <Login />
     </NativeBaseProvider>
   );
 }

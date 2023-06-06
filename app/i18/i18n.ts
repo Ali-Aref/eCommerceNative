@@ -1,5 +1,6 @@
 import { getLocales } from "expo-localization";
 import { I18n } from "i18n-js";
+import { I18nManager } from "react-native"
 
 const en = require("./en.json")
 const fa = require("./fa.json")
@@ -14,5 +15,10 @@ const i18n = new I18n({
 
 // Set the locale once at the beginning of your app.
 // i18n.locale = getLocales()[0].languageCode;
+i18n.locale = "fa";
+I18nManager.allowRTL(!false);
+I18nManager.forceRTL(!false);
+
 i18n.enableFallback = true;
+
 export default i18n;

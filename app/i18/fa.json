@@ -8,6 +8,18 @@
   "Easy checkout and safe payment methods. Trusted by our customers from all over the world.": "Easy checkout and safe payment methods. Trusted by our customers from all over the world.",
   "Fast Delivery": "Fast Delivery",
   "Reliable And Fast Delivery. We Deliver your product the fastest way possible.": "Reliable And Fast Delivery. We Deliver your product the fastest way possible.",
-  "Sell Items": "Sell Items"
-  
+  "Sell Items": "Sell Items",
+
+  "authpages": "____auth____pages",
+  "Username": "نام کاربری",
+  "Password": "پسورد",
+  "Username or Email": "نام کاربری یا ایمیل آدرس",
+  "Find Account": "جستجوی حساب کاربری",
+  "Login": "ورود به سیستم",
+  "Create New Account": "ایجاد حساب جدید",
+
+
+
+
+  "end": "____end"
 }
