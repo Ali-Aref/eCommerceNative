@@ -12,8 +12,13 @@ import { useState } from "react";
 import i18n from "../i18/i18n";
 import { Feather } from "@expo/vector-icons";
 import { AuthPagesLogo } from "../components/AuthPagesLogo";
+import { NavigationProp } from "@react-navigation/native";
 
-const ResetPassword = () => {
+const ResetPassword = ({
+  navigation,
+}: {
+  navigation: NavigationProp<any>;
+}) => {
   const [showpassword, setshowpassword] = useState(false);
 
   return (

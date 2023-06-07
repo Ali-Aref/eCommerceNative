@@ -14,12 +14,7 @@ import { Feather } from "@expo/vector-icons";
 import { AuthPagesLogo } from "../components/AuthPagesLogo";
 import { NavigationProp } from "@react-navigation/native";
 
-
-interface LoginProps {
-  navigation: NavigationProp<any>;
-}
-
-const Login = ({ navigation }: LoginProps) => {
+const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const [showpassword, setshowpassword] = useState(false);
 
   return (

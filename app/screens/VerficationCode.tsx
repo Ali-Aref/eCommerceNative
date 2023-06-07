@@ -1,8 +1,13 @@
 import { Box, Button, Flex, Image, Input, Text } from "native-base";
 import { AuthPagesLogo } from "../components/AuthPagesLogo";
 import i18n from "../i18/i18n";
+import { NavigationProp } from "@react-navigation/native";
 
-const VerificationCode = () => {
+const VerificationCode = ({
+  navigation,
+}: {
+  navigation: NavigationProp<any>;
+}) => {
   return (
     <Flex justifyContent={"space-evenly"} alignItems="center" flex={1}>
       <AuthPagesLogo />
