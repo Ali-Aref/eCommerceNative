@@ -1,6 +1,8 @@
+import 'react-native-gesture-handler';
 import React, { useEffect } from "react";
 import { I18nManager, Platform, SafeAreaView, StyleSheet } from "react-native";
 import { NativeBaseProvider, StatusBar } from "native-base";
+import { NavigationContainer } from "@react-navigation/native";
 import theme from "./theme";
 
 import Login from "./app/screens/Login";
@@ -13,7 +15,7 @@ import { useLocale } from "./app/store/useLocale";
 import ForgotPassword from "./app/screens/ForgotPassword";
 import VerificationCode from "./app/screens/VerficationCode";
 import ResetPassword from "./app/screens/ResetPassword";
-import RegisterUser from "./app/screens/RegisterUser";
+import AuthStack from './app/navigations/AuthStack';
 
 export default function App() {
   // const { languageCode, isRtl } = useLocale();
@@ -26,15 +28,9 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={theme}>
-      {/*<OnBoarding />*/}
-      {
-        /*
-      <SafeAreaView style={styles.safeArea}>
-        <StatusBar barStyle="light-content" />
-      </SafeAreaView>
-      */
-      }
-      <RegisterUser />
+      <NavigationContainer>
+        <AuthStack />
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }

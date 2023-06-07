@@ -3,8 +3,8 @@ import {
   Button,
   Flex,
   Icon,
-  Image,
   Input,
+  Link,
   Pressable,
   Text,
 } from "native-base";
@@ -12,8 +12,14 @@ import { useState } from "react";
 import i18n from "../i18/i18n";
 import { Feather } from "@expo/vector-icons";
 import { AuthPagesLogo } from "../components/AuthPagesLogo";
+import { NavigationProp } from "@react-navigation/native";
 
-const Login = () => {
+
+interface LoginProps {
+  navigation: NavigationProp<any>;
+}
+
+const Login = ({ navigation }: LoginProps) => {
   const [showpassword, setshowpassword] = useState(false);
 
   return (
@@ -31,7 +37,7 @@ const Login = () => {
           fontSize={"lg"}
           type={showpassword ? "text" : "password"}
           InputRightElement={
-            <Pressable onPress={()=> setshowpassword(!showpassword)}>
+            <Pressable onPress={() => setshowpassword(!showpassword)}>
               <Icon
                 size={"lg"}
                 right="2"
@@ -43,9 +49,24 @@ const Login = () => {
         <Button mt="4" w="full" size={"lg"}>
           {i18n.t("Login")}
         </Button>
+        <Link
+          mt="1"
+          _text={{
+            color: "primary.600",
+          }}
+          isUnderlined={false}
+          onPress={() => navigation.navigate("ForgotPassword")}
+        >
+          Forgot Password?
+        </Link>
       </Box>
       <Box px={10} w="full" alignItems="center">
-        <Button size={"lg"} variant="ghost" w="full">
+        <Button
+          size={"lg"}
+          variant="ghost"
+          w="full"
+          onPress={() => navigation.navigate("SignUp")}
+        >
           {i18n.t("Create New Account")}
         </Button>
       </Box>

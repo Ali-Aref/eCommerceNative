@@ -13,8 +13,13 @@ import { useState } from "react";
 import i18n from "../i18/i18n";
 import { Feather } from "@expo/vector-icons";
 import { AuthPagesLogo } from "../components/AuthPagesLogo";
+import { NavigationProp } from "@react-navigation/native";
 
-const RegisterUser = () => {
+interface SignUpProps {
+  navigation: NavigationProp<any>;
+}
+
+const SignUp = ({ navigation }: SignUpProps) => {
   const [showpassword, setshowpassword] = useState(false);
 
   return (
@@ -48,11 +53,16 @@ const RegisterUser = () => {
               }
             />
             <Button mt="4" w="full" size={"lg"}>
-              {i18n.t("Login")}
+              {i18n.t("Create")}
             </Button>
           </Box>
           <Box px={10} w="full" alignItems="center">
-            <Button size={"lg"} variant="ghost" w="full">
+            <Button
+              size={"lg"}
+              w="full"
+              variant="ghost"
+              onPress={() => navigation.navigate("Login")}
+            >
               {i18n.t("Login")}
             </Button>
           </Box>
@@ -62,4 +72,4 @@ const RegisterUser = () => {
   );
 };
 
-export default RegisterUser;
+export default SignUp;
