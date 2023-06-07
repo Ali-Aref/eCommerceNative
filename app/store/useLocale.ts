@@ -17,14 +17,14 @@ export const useLocale = create<Locale>()(
       languageCode: "en",
       setLanguageCode: (code) =>
         set((state) => {
-          i18n.locale = code;
+          // i18n.locale = code;
           return { ...state, languageCode: code };
         }),
       isRtl: false,
       setIsRtl: (isRtl) =>
         set((state) => {
-          I18nManager.allowRTL(isRtl);
-          I18nManager.forceRTL(isRtl);
+          // I18nManager.allowRTL(isRtl);
+          // I18nManager.forceRTL(isRtl);
           return { ...state, isRtl };
         }),
     }),

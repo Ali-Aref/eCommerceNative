@@ -11,6 +11,9 @@ import OnBoarding from "./app/screens/OnBoarding";
 import i18n from "./app/i18/i18n";
 import { useLocale } from "./app/store/useLocale";
 import ForgotPassword from "./app/screens/ForgotPassword";
+import VerificationCode from "./app/screens/VerficationCode";
+import ResetPassword from "./app/screens/ResetPassword";
+import RegisterUser from "./app/screens/RegisterUser";
 
 export default function App() {
   // const { languageCode, isRtl } = useLocale();
@@ -31,8 +34,7 @@ export default function App() {
       </SafeAreaView>
       */
       }
-      {/*<ForgotPassword />*/}
-      <Login />
+      <RegisterUser />
     </NativeBaseProvider>
   );
 }
