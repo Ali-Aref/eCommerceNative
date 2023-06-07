@@ -53,7 +53,7 @@ const RegisterUser = () => {
           </Box>
           <Box px={10} w="full" alignItems="center">
             <Button size={"lg"} variant="ghost" w="full">
-              {i18n.t("Create New Account")}
+              {i18n.t("Login")}
             </Button>
           </Box>
         </Flex>
