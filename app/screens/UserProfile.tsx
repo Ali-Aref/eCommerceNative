@@ -1,13 +1,13 @@
 import { Box } from 'native-base'
 import React from 'react'
 
-const Home = (props : {}) => {
+const UserProfile = (props : {}) => {
   return (
     <Box justifyContent={"center"} flex="1" alignItems={"center"}>
-      THIS IS HOME
+      User Profile
     </Box>
   )
 }
 
-export default Home;
+export default UserProfile;
 

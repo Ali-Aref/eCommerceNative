@@ -1,6 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { Box, Image } from "native-base";
-import { useWindowDimensions } from "react-native";
 import ForgotPassword from "../screens/ForgotPassword";
 import Login from "../screens/Login";
 import SignUp from "../screens/SignUp";
@@ -30,7 +29,7 @@ export default function AuthStack() {
         cardStyle: {
           backgroundColor: "white",
         },
-        presentation:"card",
+        presentation: "card",
       }}
       initialRouteName="Login"
     >
@@ -38,7 +37,11 @@ export default function AuthStack() {
       <Stack.Screen name="VerificationCode" component={VerificationCode} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="SignUp" component={SignUp} />
-      <Stack.Screen name="HomeTabs" component={HomeTabs} options={{ headerShown: false }} />
+      <Stack.Screen
+        name="HomeTabs"
+        component={HomeTabs}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }

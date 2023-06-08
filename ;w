@@ -82,27 +82,29 @@ export default function HomeTabs() {
 
 const CustomTabBarButton = (props: any) => {
   const { children, accessibilityState, onPress } = props;
-  return accessibilityState.selected
-    ? (
-      <Box flex={1} alignItems={"center"}>
-        <Pressable
-          w="55"
-          h="55"
-          bg="primary.600"
-          shadow={"6"}
-          onPress={onPress}
-          borderRadius="full"
-          top="-15"
-        >
-          {children}
-        </Pressable>
-      </Box>
-    )
-    : (
+
+  if (accessibilityState.selected) {
+    return (
+      <Pressable
+        w="50"
+        h="50"
+        ml="5"
+        bg="primary.600"
+        shadow={"6"}
+        onPress={onPress}
+        borderRadius="full"
+        top="-10"
+      >
+        {children}
+      </Pressable>
+    );
+  } else {
+    return (
       <Pressable flex={1} onPress={onPress}>
         {children}
       </Pressable>
     );
+  }
 };
 
 const style = StyleSheet.create({

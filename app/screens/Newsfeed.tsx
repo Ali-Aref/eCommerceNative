@@ -3,7 +3,7 @@ import React from 'react'
 
 const Newsfeed = (props : {}) => {
   return (
-    <Box>
+    <Box justifyContent={"center"} flex="1" alignItems={"center"}>
       THIS IS NEWS FEED
     </Box>
   )
