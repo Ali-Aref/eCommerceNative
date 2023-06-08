@@ -14,7 +14,6 @@
   "Create": "ساختن",
   "authpages": "____auth____pages",
   "Username": "نام کاربری",
-  "Password": "پسورد",
   "Username or Email": "نام کاربری یا ایمیل آدرس",
   "Email": "ایمیل",
   "Find Account": "جستجوی حساب کاربری",
@@ -23,8 +22,10 @@
   "Send Reset Link": "ارسال لینک ریست",
   "Verify": "تایید",
   "Verification Code": "کد تاییدی",
+  "Password": "پسورد",
   "New Password": "رمز جدید",
   "Confirm Your Password": "تایید رمز",
+  "Forgot Password?": "رمز تان را فراموش کرده اید؟", 
   "Name": "نام",
 
 

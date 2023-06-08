@@ -20,7 +20,6 @@
   "authpages": "____auth____pages",
   "Username": "Username",
   "Email": "Email",
-  "Password": "Password",
   "Username or Email": "Username or Email",
   "Find Account": "Find Account",
   "Create New Account": "Create New Account",
@@ -28,8 +27,10 @@
   "Send Reset Link": "Send Reset Link",
   "Verify": "Verify",
   "Verification Code": "Verification Code",
+  "Password": "Password",
   "New Password": "New Password",
   "Confirm Your Password": "Confirm Your Password",
+  "Forgot Password?": "Forgot Password?", 
   "Name": "Name",
   
 
