@@ -11,7 +11,6 @@ import {
 import { useState } from "react";
 import i18n from "../i18/i18n";
 import { Feather } from "@expo/vector-icons";
-import { AuthPagesLogo } from "../components/AuthPagesLogo";
 import { NavigationProp } from "@react-navigation/native";
 
 const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
@@ -19,7 +18,6 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
 
   return (
     <Flex justifyContent={"space-evenly"} alignItems="center" flex={1}>
-      <AuthPagesLogo />
       <Box padding={10} w="full">
         <Text fontSize={"lg"}>{i18n.t("Username")}</Text>
         <Input mt="2" fontSize={"lg"} w="full" />
@@ -41,7 +39,12 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
             </Pressable>
           }
         />
-        <Button mt="4" w="full" size={"lg"}>
+        <Button
+          mt="4"
+          w="full"
+          size={"lg"}
+          onPress={() => navigation.navigate("HomeTabs")}
+        >
           {i18n.t("Login")}
         </Button>
         <Link

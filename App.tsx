@@ -18,7 +18,7 @@ import ResetPassword from "./app/screens/ResetPassword";
 import AuthStack from './app/navigations/AuthStack';
 
 export default function App() {
-  // const { languageCode, isRtl } = useLocale();
+  const { languageCode, isRtl } = useLocale();
 
   // useEffect(() => {
   //   i18n.locale = languageCode;
