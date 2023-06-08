@@ -55,7 +55,7 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
           isUnderlined={false}
           onPress={() => navigation.navigate("ForgotPassword")}
         >
-          Forgot Password?
+          {i18n.t("Forgot Password?")}
         </Link>
       </Box>
       <Box px={10} w="full" alignItems="center">
