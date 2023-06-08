@@ -10,8 +10,8 @@ export default function HomeTabs() {
     <Tab.Navigator initialRouteName="Newsfeed" screenOptions={{
       headerShown: false,
     }}>
-      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Newsfeed" component={Newsfeed} />
+      <Tab.Screen name="Home" component={Home} />
     </Tab.Navigator>
   );
 }

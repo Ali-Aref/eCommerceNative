@@ -27,10 +27,10 @@ export default function AuthStack() {
             </Box>
           );
         },
-        // headerShown: false,
         cardStyle: {
           backgroundColor: "white",
         },
+        presentation:"card",
       }}
       initialRouteName="Login"
     >
@@ -38,7 +38,7 @@ export default function AuthStack() {
       <Stack.Screen name="VerificationCode" component={VerificationCode} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="SignUp" component={SignUp} />
-      <Stack.Screen name="HomeTabs" component={HomeTabs} />
+      <Stack.Screen name="HomeTabs" component={HomeTabs} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
