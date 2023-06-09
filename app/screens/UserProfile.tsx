@@ -14,10 +14,12 @@ import {
 } from "native-base";
 import { color } from "native-base/lib/typescript/theme/styled-system";
 import React from "react";
-import { ImageBackground } from "react-native";
+import { UserNewPost } from "../components/UserNewPost";
+import { ImageBackground, FlatList } from "react-native";
+import i18n from "../i18/i18n";
 
 const UserProfile = (props: {}) => {
-  return (
+  const Header = (
     <Stack flex="1" alignItems={"center"}>
       <Box h="250" w="full" marginBottom={"50"}>
         <ImageBackground
@@ -59,30 +61,88 @@ const UserProfile = (props: {}) => {
           Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint
           cillum sint consectetur cupidatat.
         </Text>
-        <HStack mt="5" space={2} display="none">
-          <Button leftIcon={<Icon as={<Feather name="plus" />} />} flex="1">
-            New Post
-          </Button>
+        <HStack mt="5" space={2}>
           <Button
             leftIcon={<Icon as={<Feather name="user" />} />}
-            colorScheme="secondary"
+            colorScheme={"primary"}
             flex="1"
           >
-            Edit Profile
+            {i18n.t("Edit Profile")}
           </Button>
-          <Button
-            leftIcon={<Icon as={<Feather name="settings" />} />}
-            colorScheme="secondary"
-          >
-          </Button>
+          <IconButton
+            variant="solid"
+            px="3"
+            colorScheme={"teal"}
+            icon={<Icon as={<Feather name="activity" />} size="sm" />}
+          />
+          <IconButton
+            px="3"
+            variant="solid"
+            colorScheme={"cyan"}
+            icon={<Icon as={<Feather name="heart" />} size="sm" />}
+          />
+          <IconButton
+            px="3"
+            variant="solid"
+            colorScheme={"secondary"}
+            icon={<Icon as={<Feather name="shopping-cart" />} size="sm" />}
+          />
         </HStack>
       </Box>
     </Stack>
+  );
+
+  return (
+    <FlatList
+      data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
+      keyExtractor={(item) => item.key.toString()} 
+      ListHeaderComponent={Header}
+      ListFooterComponent={<Box mt="20"></Box>}
+      showsVerticalScrollIndicator={false}
+      renderItem={() => <PostItem />}
+    />
   );
 };
 
 export default UserProfile;
 
-
 const PostItem = () => {
-}
+  return (
+    <Box bg="white" shadow={7} rounded="md" mx={"3"} mt="4">
+      <Image
+        source={require("../assets/temp/post2.png")}
+        h="250"
+        alt="post-img"
+        borderTopRadius={"md"}
+      />
+      <Box p={4}>
+        <Flex flexDir={"row"} justifyContent="space-between">
+          <HStack alignItems="center" mt={2}>
+            <Icon as={Feather} name="heart" size={5} color="gray.500" />
+            <Text ml={1} fontSize="sm" color="gray.500">
+              5 likes
+            </Text>
+          </HStack>
+          <Text fontSize="sm" color="gray.500" mt={2}>
+            3 comments
+          </Text>
+        </Flex>
+        <Text fontSize="sm" color="gray.500" mt={2}>
+          3 days ago
+        </Text>
+        <HStack space={2} alignItems={"center"} mt={4}>
+          <Text fontSize="lg" fontWeight="bold">
+            Post Title
+          </Text>
+          <Text fontWeight="semibold" color="gray.500">
+            250 AF
+          </Text>
+        </HStack>
+        <Text fontSize="md" mt={2} numberOfLines={2}>
+          This is the post description. Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit.
+        </Text>
+      </Box>
+    </Box>
+  );
+};
