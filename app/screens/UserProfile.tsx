@@ -1,8 +1,7 @@
-import { AntDesign, Feather } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import {
   Box,
   Button,
-  Divider,
   Flex,
   HStack,
   Icon,
@@ -10,14 +9,15 @@ import {
   Image,
   Stack,
   Text,
-  VStack,
 } from "native-base";
 import { color } from "native-base/lib/typescript/theme/styled-system";
-import React from "react";
-import { UserNewPost } from "../components/UserNewPost";
-import { FlatList, ImageBackground, SafeAreaView, useWindowDimensions } from "react-native";
+import React, { useRef } from "react";
+ import UserPost from "../components/UserPost";
+import {
+  FlatList,
+  ImageBackground,
+} from "react-native";
 import i18n from "../i18/i18n";
-import { Circle } from "react-native-svg";
 
 const UserProfile = (props: {}) => {
   const Header = (
@@ -94,82 +94,16 @@ const UserProfile = (props: {}) => {
   );
 
   return (
-    <SafeAreaView>
-      <FlatList
-        data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
-        keyExtractor={(item) => item.key.toString()}
-        ListHeaderComponent={Header}
-        ListFooterComponent={<Box mt="20"></Box>}
-        showsVerticalScrollIndicator={false}
-        renderItem={() => <PostItem />}
-      />
-    </SafeAreaView>
+    <FlatList
+      data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
+      keyExtractor={(item) => item.key.toString()}
+      ListHeaderComponent={Header}
+      ListFooterComponent={<Box mt="20"></Box>}
+      showsVerticalScrollIndicator={false}
+      renderItem={() => <UserPost />}
+    />
   );
 };
 
 export default UserProfile;
 
-const PostItem = (props: any) => {
-  const { width } = useWindowDimensions()
-  console.log("width: ", width)
-  return (
-    <Box bg="white" shadow={7} rounded="md" mx={"3"} mt="4">
-      <FlatList
-        horizontal={true}
-        snapToInterval={width} 
-        data={[{ key: 1 }, { key: 2 }]}
-        renderItem={(item) => (
-          <Image
-            source={require("../assets/temp/post2.png")}
-            h="250"
-            alt="post-img"
-            borderTopRadius={"md"}
-          />
-        )}
-      />
-      <Box p={4}>
-        <Flex
-          flexDir={"row"}
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <HStack mt={2}>
-            <Icon
-              as={AntDesign}
-              name="heart"
-              size={5}
-              color={Math.round(Math.random() * 10) % 2 === 0
-                ? "red.600"
-                : "gray.300"}
-            />
-            <Text ml={1} fontSize="sm" color="gray.500">
-              5 likes
-            </Text>
-          </HStack>
-          <HStack space={0.5}>
-            <Box h="2" w="2" bg="primary.600" borderRadius={"full"} />
-            <Box h="2" w="2" bg="gray.400" borderRadius={"full"} />
-          </HStack>
-          <Text fontSize="sm" color="gray.500" mt={2}>
-            3 comments
-          </Text>
-        </Flex>
-        <Text fontSize="sm" color="gray.500" mt={2}>
-          3 days ago
-        </Text>
-        <HStack space={2} alignItems={"center"} mt={4}>
-          <Text fontSize="lg" fontWeight="bold">
-            Post Title
-          </Text>
-          <Text fontWeight="semibold" color="gray.500">
-            250 AF
-          </Text>
-        </HStack>
-        <Text fontSize="md" mt={2} numberOfLines={2}>
-          This is the post description. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit.
-        </Text>
-      </Box>
-    </Box>
-  );
-};
