@@ -12,14 +12,12 @@ import {
 } from "native-base";
 import { color } from "native-base/lib/typescript/theme/styled-system";
 import React, { useRef } from "react";
- import UserPost from "../components/UserPost";
-import {
-  FlatList,
-  ImageBackground,
-} from "react-native";
+import UserPost from "../components/UserPost";
+import { FlatList, ImageBackground } from "react-native";
 import i18n from "../i18/i18n";
+import { NavigationProp } from "@react-navigation/native";
 
-const UserProfile = (props: {}) => {
+const UserProfile = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const Header = (
     <Stack flex="1" alignItems={"center"}>
       <Box h="250" w="full" marginBottom={"50"}>
@@ -100,10 +98,9 @@ const UserProfile = (props: {}) => {
       ListHeaderComponent={Header}
       ListFooterComponent={<Box mt="20"></Box>}
       showsVerticalScrollIndicator={false}
-      renderItem={() => <UserPost />}
+      renderItem={() => <UserPost navigation={navigation} />}
     />
   );
 };
 
 export default UserProfile;
-
