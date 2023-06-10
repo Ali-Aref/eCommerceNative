@@ -71,7 +71,7 @@ const UserPostDetails = () => {
             3 comments
           </Text>
         </Flex>
-        <Text fontSize="sm" color={"gray.500"} mt={2}>
+        <Text fontSize="sm" color={"gray.500"} mt={2} textAlign="left">
           3 days ago
         </Text>
         <HStack space={2} alignItems="center" mt={4}>
@@ -82,11 +82,11 @@ const UserPostDetails = () => {
             250 AF
           </Text>
         </HStack>
-        <Text fontSize="md" mt={2} numberOfLines={2}>
+        <Text fontSize="md" mt={2} numberOfLines={2} textAlign="left">
           This is the post description. Lorem ipsum dolor sit amet, consectetur
           adipiscing elit.
         </Text>
-        <Text my="2" fontWeight={"semibold"} fontSize="lg">
+        <Text my="2" fontWeight={"semibold"} fontSize="lg" textAlign={"left"}>
           Comments
         </Text>
       </Box>
@@ -105,7 +105,7 @@ const UserPostDetails = () => {
         )}
       />
       <HStack px="3" space={2} my="2">
-        <Input flex="1" placeholder="Add new comment" />
+        <Input flex="1" placeholder="Add new comment" textAlign={"left"} />
         <IconButton
           variant={"solid"}
           px="3"

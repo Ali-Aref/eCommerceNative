@@ -51,21 +51,29 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
               />
             </Pressable>
             <Text ml={1} fontSize="sm" color="gray.500">
-              {like.count} likes
+              {like.count}
+            </Text>
+            <Text ml={1} fontSize="sm" color="gray.500">
+              Like
             </Text>
           </HStack>
           <HStack space={0.5}>
             <Box h="2" w="2" bg="primary.600" borderRadius={"full"} />
             <Box h="2" w="2" bg="gray.400" borderRadius={"full"} />
           </HStack>
-          <Text fontSize="sm" color="gray.500" mt={2}>
-            3 comments
-          </Text>
+          <HStack mt="2" space={1}>
+            <Text fontSize="sm" color="gray.500">
+              3
+            </Text>
+            <Text fontSize="sm" color="gray.500">
+              Comments
+            </Text>
+          </HStack>
         </Flex>
-        <Text fontSize="sm" color="gray.500" mt={2}>
+        <Text fontSize="sm" color="gray.500" mt={2} textAlign="left">
           3 days ago
         </Text>
-        <Pressable onPress={()=> navigation.navigate("ProfileStack")}>
+        <Pressable onPress={() => navigation.navigate("ProfileStack")}>
           <HStack space={2} alignItems={"center"} mt={4}>
             <Text fontSize="lg" fontWeight="bold">
               Post Title
@@ -74,7 +82,7 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
               250 AF
             </Text>
           </HStack>
-          <Text fontSize="md" mt={2} numberOfLines={2}>
+          <Text fontSize="md" mt={2} numberOfLines={2} textAlign="left">
             This is the post description. Lorem ipsum dolor sit amet,
             consectetur adipiscing elit.
           </Text>
