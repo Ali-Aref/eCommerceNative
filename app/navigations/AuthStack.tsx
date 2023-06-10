@@ -5,6 +5,7 @@ import Login from "../screens/Login";
 import SignUp from "../screens/SignUp";
 import VerificationCode from "../screens/VerficationCode";
 import HomeTabs from "./HomeTabs";
+import { ProfileStack } from "./ProfileStack";
 
 const Stack = createStackNavigator();
 
@@ -40,6 +41,11 @@ export default function AuthStack() {
       <Stack.Screen
         name="HomeTabs"
         component={HomeTabs}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
