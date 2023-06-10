@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
-import { View, Image, FlatList } from 'react-native';
-import { Box, Text, HStack, Pressable, Icon, Flex, Input, Button, VStack } from 'native-base';
-import { AntDesign } from '@expo/vector-icons';
+import React, { useState } from "react";
+import { FlatList, useWindowDimensions } from "react-native";
+import {
+  Box,
+  Button,
+  Flex,
+  HStack,
+  Icon,
+  IconButton,
+  Image,
+  Input,
+  Pressable,
+  Text,
+  VStack,
+} from "native-base";
+import { AntDesign, Feather } from "@expo/vector-icons";
+import { Header } from "@react-navigation/stack";
 
 const UserPostDetails = () => {
+  const { width } = useWindowDimensions();
+
   const [like, setLike] = useState({ liked: false, count: 0 });
-  const [comments, setComments] = useState([
-    { id: 1, text: 'Comment 1' },
-    { id: 2, text: 'Comment 2' },
-    { id: 3, text: 'Comment 3' },
-  ]);
-  const [newComment, setNewComment] = useState('');
 
   const handleLike = () => {
     setLike((prevState) => ({
@@ -20,41 +29,26 @@ const UserPostDetails = () => {
     }));
   };
 
-  const handleAddComment = () => {
-    if (newComment) {
-      const comment = { id: comments.length + 1, text: newComment };
-      setComments((prevComments) => [...prevComments, comment]);
-      setNewComment('');
-    }
-  };
-
-  const renderItem = ({ item }) => {
-    return (
-      <Box p={2} borderBottomWidth={1} borderBottomColor="gray.200">
-        <Text>{item.text}</Text>
-      </Box>
-    );
-  };
-
-  return (
-    <Box bg="white" shadow={7} rounded="md" mx={3} mt={4}>
+  const Header = (
+    <Box flex="1">
       <FlatList
-        horizontal
+        horizontal={true}
         pagingEnabled
         snapToAlignment="start"
         decelerationRate="fast"
         showsHorizontalScrollIndicator={false}
         data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
-        renderItem={({ item }) => (
+        renderItem={(item) => (
           <Image
-            source={require('../assets/temp/post.jpg')}
-            style={{ height: 250, width: 388 }}
+            source={require("../assets/temp/post.jpg")}
+            h="250"
+            w={width}
             alt="post-img"
-            borderTopRadius="md"
+            borderTopRadius={"md"}
           />
         )}
       />
-      <Box p={4}>
+      <Box px="4">
         <Flex flexDir="row" alignItems="center" justifyContent="space-between">
           <HStack mt={2}>
             <Pressable onPress={handleLike}>
@@ -62,7 +56,7 @@ const UserPostDetails = () => {
                 as={AntDesign}
                 name="heart"
                 size={5}
-                color={like.liked ? 'red.600' : 'gray.300'}
+                color={like.liked ? "red.600" : "gray.300"}
               />
             </Pressable>
             <Text ml={1} fontSize="sm" color="gray.500">
@@ -74,10 +68,10 @@ const UserPostDetails = () => {
             <Box h="2" w="2" bg="gray.400" borderRadius="full" />
           </HStack>
           <Text fontSize="sm" color="gray.500" mt={2}>
-            {comments.length} comments
+            3 comments
           </Text>
         </Flex>
-        <Text fontSize="sm" color="gray.500" mt={2}>
+        <Text fontSize="sm" color={"gray.500"} mt={2}>
           3 days ago
         </Text>
         <HStack space={2} alignItems="center" mt={4}>
@@ -89,27 +83,36 @@ const UserPostDetails = () => {
           </Text>
         </HStack>
         <Text fontSize="md" mt={2} numberOfLines={2}>
-          This is the post description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          This is the post description. Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit.
         </Text>
-        <VStack mt={4} space={2}>
-          <Text fontSize="lg" fontWeight="bold">
-            Comments
-          </Text>
-          <FlatList
-            data={comments}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id.toString()}
-            contentContainerStyle={{ flexGrow: 1 }}
-          />
-          <Input
-            placeholder="Add a comment"
-            value={newComment}
-            onChangeText={setNewComment}
-          />
-          <Button onPress={handleAddComment}>Add Comment</Button>
-        </VStack>
+        <Text my="2" fontWeight={"semibold"} fontSize="lg">
+          Comments
+        </Text>
       </Box>
     </Box>
+  );
+
+  return (
+    <Flex rounded="md" flex="1">
+      <FlatList
+        data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
+        ListHeaderComponent={Header}
+        renderItem={(item) => (
+          <Box px="3">
+            <Text>COMMENT</Text>
+          </Box>
+        )}
+      />
+      <HStack px="3" space={2} my="2">
+        <Input flex="1" placeholder="Add new comment" />
+        <IconButton
+          variant={"solid"}
+          px="3"
+          icon={<Feather color="white" size={20} name="send" />}
+        />
+      </HStack>
+    </Flex>
   );
 };
 
