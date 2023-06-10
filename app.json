@@ -33,6 +33,7 @@
       "expo-localization"
     ],
     "androidNavigationBar": {
+      "barStyle": "light-content",
       "backgroundColor": "#43A047"
     }
   }
