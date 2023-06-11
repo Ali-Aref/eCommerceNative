@@ -1,0 +1,23 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Iphone x",
+      "price": 250,
+      "likes": 10,
+      "comment": 3,
+      "posted_date": "3 days ago",
+      "description": "Iphone XS Max used 256GB, 16GB 2SIM"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
