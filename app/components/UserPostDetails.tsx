@@ -14,7 +14,7 @@ import {
   VStack,
 } from "native-base";
 import { AntDesign, Feather } from "@expo/vector-icons";
-import { Header } from "@react-navigation/stack";
+import Comment from "./comment";
 
 const UserPostDetails = () => {
   const { width } = useWindowDimensions();
@@ -99,9 +99,12 @@ const UserPostDetails = () => {
         data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
         ListHeaderComponent={Header}
         renderItem={(item) => (
-          <Box px="3">
-            <Text>COMMENT</Text>
-          </Box>
+          <Comment
+            avatarSource={require("../assets/temp/profile.png")}
+            timestamp={"2023-03-01"}
+            commenterName={"Ali"}
+            commentText={"Nice post"}
+          />
         )}
       />
       <HStack px="3" space={2} my="2">
