@@ -1,26 +1,36 @@
 {
+  "user": {
+    "id": 1,
+    "first_name": "ali aref",
+    "email": "ali412514n@gmail.com",
+    "password": "alialiali"
+  },
+  "userprofile": {
+    "last_name": "mohammadzada",
+    "avatar": "./app/assets/temp/profile.png"
+  },
   "posts": [
-    { 
-	    "id": 1,
-	    "title": "Iphone", 
-	    "price": 250,
-	    "discount": 10,
-	    "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum." ,
-	    "images": [
-	    	"../assets/temp/post.jpg",
-	    	"../assets/temp/post1.png"
-	    ]
-	},
-    { 
-	    "id": 2,
-	    "title": "Samsung TV", 
-	    "price": 250,
-	    "discount": 10,
-	    "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum." ,
-	    "images": [
-	    	"../assets/temp/post.jpg",
-	    	"../assets/temp/post1.png"
-	    ]
-	}
+    {
+      "id": 1,
+      "title": "Iphone",
+      "price": 250,
+      "discount": 10,
+      "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
+      "images": [
+        "../assets/temp/post.jpg",
+        "../assets/temp/post1.png"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Samsung TV",
+      "price": 250,
+      "discount": 10,
+      "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
+      "images": [
+        "../assets/temp/post.jpg",
+        "../assets/temp/post1.png"
+      ]
+    }
   ]
 }
