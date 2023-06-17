@@ -9,6 +9,7 @@ import Business from "../screens/Business";
 import UserNewPost from "../screens/UserNewPost";
 import { StyleSheet } from "react-native";
 import { colors } from "../../theme";
+import { ProfileStack } from "./ProfileStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +27,7 @@ export default function HomeTabs() {
             Business: "grid",
             UserNewPost: "plus-square",
             Videos: "box",
-            UserProfile: "user",
+            ProfileStack: "user",
           };
           return (
             <Icon
@@ -50,7 +51,7 @@ export default function HomeTabs() {
       />
       <Tab.Screen
         name="Videos"
-        component={UserProfile}
+        component={Home}
         options={{
           tabBarButton: (props) => <CustomTabBarButton {...props} />,
         }}
@@ -70,8 +71,8 @@ export default function HomeTabs() {
         }}
       />
       <Tab.Screen
-        name="UserProfile"
-        component={UserProfile}
+        name="ProfileStack"
+        component={ProfileStack}
         options={{
           tabBarButton: (props) => <CustomTabBarButton {...props} />,
         }}

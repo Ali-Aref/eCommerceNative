@@ -1,13 +1,14 @@
 import React from "react";
-import { Box } from "native-base";
-import { Animated, useWindowDimensions } from "react-native";
+import { Box, Text } from "native-base";
+import { Animated, ImageSourcePropType, useWindowDimensions } from "react-native";
 import {
   GestureHandlerRootView,
   PinchGestureHandler,
   State,
 } from "react-native-gesture-handler";
+import { RouteProp } from "@react-navigation/native";
 
-const ImageCloseup = () => {
+const ImageCloseup = ({ route }: { route: RouteProp<any> }) => {
   const { width } = useWindowDimensions();
   const scale = new Animated.Value(1);
 
@@ -29,7 +30,8 @@ const ImageCloseup = () => {
         <PinchGestureHandler onGestureEvent={gestureEvent}
         onHandlerStateChange={pinchStateChanged}>
           <Animated.Image
-            source={require("../assets/temp/profile2.jpg")}
+            // source={require("../assets/temp/profile2.jpg")}
+            source={route.params?.src}
             style={{ width: width, transform: [{ scale }] }}
             resizeMode="contain"
             alt="img"

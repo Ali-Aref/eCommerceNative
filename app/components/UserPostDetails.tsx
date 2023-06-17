@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FlatList, useWindowDimensions } from "react-native";
 import {
   Box,
-  Button,
   Flex,
   HStack,
   Icon,
@@ -11,12 +10,13 @@ import {
   Input,
   Pressable,
   Text,
-  VStack,
 } from "native-base";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import Comment from "./comment";
+import ZoomableImage from "./ZoomableImage";
+import { NavigationProp } from "@react-navigation/native";
 
-const UserPostDetails = () => {
+const UserPostDetails = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const { width } = useWindowDimensions();
 
   const [like, setLike] = useState({ liked: false, count: 0 });
@@ -39,13 +39,17 @@ const UserPostDetails = () => {
         showsHorizontalScrollIndicator={false}
         data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
         renderItem={(item) => (
-          <Image
-            source={require("../assets/temp/post.jpg")}
-            h="250"
-            w={width}
-            alt="post-img"
-            borderTopRadius={"md"}
-          />
+          <Pressable onPress={() => navigation.navigate("ImageCloseUp", {
+            src: require("../assets/temp/post.jpg")
+          })}>
+            <Image
+              source={require("../assets/temp/post.jpg")}
+              h="250"
+              w={width}
+              alt="post-img"
+              borderTopRadius={"md"}
+            />
+          </Pressable>
         )}
       />
       <Box px="4">
@@ -76,7 +80,7 @@ const UserPostDetails = () => {
         </Text>
         <HStack space={2} alignItems="center" mt={4}>
           <Text fontSize="lg" fontWeight="bold">
-            Post Title
+            Post {1} Title
           </Text>
           <Text fontWeight="semibold" color="gray.500">
             250 AF

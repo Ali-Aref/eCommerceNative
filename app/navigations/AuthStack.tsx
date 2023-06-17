@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Box, Image } from "native-base";
+import { Box, Image, Text } from "native-base";
 import ForgotPassword from "../screens/ForgotPassword";
 import Login from "../screens/Login";
 import SignUp from "../screens/SignUp";
@@ -17,12 +17,12 @@ export default function AuthStack() {
           return (
             <Box w="full" alignItems="center">
               <Image
-                mt="20"
-                w="200"
-                h="200"
+                mt="24"
+                w="250"
+                h="250"
                 alt="logo"
                 resizeMode="contain"
-                source={require("../assets/img/logo2.png")}
+                source={require("../assets/logo1.png")}
               />
             </Box>
           );
@@ -30,7 +30,8 @@ export default function AuthStack() {
         cardStyle: {
           backgroundColor: "white",
         },
-        presentation: "card",
+        // presentation: "card",
+        presentation: "transparentModal",
       }}
       initialRouteName="Login"
     >

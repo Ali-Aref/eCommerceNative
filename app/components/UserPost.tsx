@@ -3,6 +3,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { FlatList, Pressable } from "react-native";
 import { useState } from "react";
 import { NavigationProp } from "@react-navigation/native";
+import ZoomableImage from "./ZoomableImage";
 
 const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const [like, setLike] = useState({
@@ -26,13 +27,20 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
         showsHorizontalScrollIndicator={false}
         data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
         renderItem={(item) => (
-          <Image
-            source={require("../assets/temp/post.jpg")}
-            h="250"
-            w={"388"}
-            alt="post-img"
-            borderTopRadius={"md"}
-          />
+          <Pressable
+            onPress={() =>
+              navigation.navigate("ImageCloseUp", {
+                src: require("../assets/temp/post.jpg"),
+              })}
+          >
+            <Image
+              source={require("../assets/temp/post.jpg")}
+              h="250"
+              w={"388"}
+              alt="post-img"
+              borderTopRadius={"md"}
+            />
+          </Pressable>
         )}
       />
       <Box p={4}>
@@ -73,7 +81,7 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
         <Text fontSize="sm" color="gray.500" mt={2} textAlign="left">
           3 days ago
         </Text>
-        <Pressable onPress={() => navigation.navigate("ProfileStack")}>
+        <Pressable onPress={() => navigation.navigate("UserPostDetails")}>
           <HStack space={2} alignItems={"center"} mt={4}>
             <Text fontSize="lg" fontWeight="bold">
               Post Title

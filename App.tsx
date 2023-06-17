@@ -1,4 +1,4 @@
-import 'react-native-gesture-handler';
+import "react-native-gesture-handler";
 import React, { useEffect } from "react";
 import { I18nManager, Platform, SafeAreaView, StyleSheet } from "react-native";
 import { NativeBaseProvider, StatusBar } from "native-base";
@@ -15,7 +15,8 @@ import { useLocale } from "./app/store/useLocale";
 import ForgotPassword from "./app/screens/ForgotPassword";
 import VerificationCode from "./app/screens/VerficationCode";
 import ResetPassword from "./app/screens/ResetPassword";
-import AuthStack from './app/navigations/AuthStack';
+import AuthStack from "./app/navigations/AuthStack";
+import ImageCloseup from "./app/components/ImageCloseup";
 
 export default function App() {
   const { languageCode, isRtl } = useLocale();
@@ -29,6 +30,9 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
+        {/*
+        <ImageCloseup />
+        */}
         <AuthStack />
       </NavigationContainer>
     </NativeBaseProvider>
