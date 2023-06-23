@@ -10,7 +10,6 @@ import {
   Stack,
   Text,
 } from "native-base";
-import { color } from "native-base/lib/typescript/theme/styled-system";
 import React, { useRef } from "react";
 import UserPost from "../components/UserPost";
 import { FlatList, ImageBackground } from "react-native";
@@ -97,7 +96,7 @@ const UserProfile = ({ navigation }: { navigation: NavigationProp<any> }) => {
       data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
       keyExtractor={(item) => item.key.toString()}
       ListHeaderComponent={Header}
-      ListFooterComponent={<Box mt="20"></Box>}
+      ListFooterComponent={<Box mb={20}></Box>}
       showsVerticalScrollIndicator={false}
       renderItem={() => <UserPost navigation={navigation} />}
     />
