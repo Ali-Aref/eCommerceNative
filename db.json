@@ -9,6 +9,11 @@
     "last_name": "mohammadzada",
     "avatar": "./app/assets/temp/profile.png"
   },
+  "shoppingCard": [
+    { "product": 1, "count": 3 },
+    { "product": 3, "count": 1 }
+  ],
+  "wishList": [{ "product": 2 }, { "product": 4 }],
   "posts": [
     {
       "id": 1,
@@ -16,9 +21,29 @@
       "price": 250,
       "discount": 10,
       "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
-      "images": [
-        "../assets/temp/post.jpg",
-        "../assets/temp/post1.png"
+      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "comments": [
+        {
+          "id": 1,
+          "user": "Ali Aref",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "Nice I want to buy this",
+          "timestamp": "2 hours ago"
+        },
+        {
+          "id": 2,
+          "user": "Reza Rahimi",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "If you want to sell 200 Afs, contact me",
+          "timestamp": "1 hours ago"
+        },
+        {
+          "id": 3,
+          "user": "Siroz",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "I will sell this at 150 Afs",
+          "timestamp": "yesterday"
+        }
       ]
     },
     {
@@ -27,9 +52,103 @@
       "price": 250,
       "discount": 10,
       "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
-      "images": [
-        "../assets/temp/post.jpg",
-        "../assets/temp/post1.png"
+      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "comments": [
+        {
+          "id": 1,
+          "user": "Ali Aref",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "Nice I want to buy this",
+          "timestamp": "2 hours ago"
+        },
+        {
+          "id": 2,
+          "user": "Reza Rahimi",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "If you want to sell 200 Afs, contact me",
+          "timestamp": "1 hours ago"
+        },
+        {
+          "id": 3,
+          "user": "Siroz",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "I will sell this at 150 Afs",
+          "timestamp": "yesterday"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Sony PS 5",
+      "price": 7500,
+      "discount": 10,
+      "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
+      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "comments": [
+        {
+          "id": 1,
+          "user": "Ali Aref",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "Nice I want to buy this",
+          "timestamp": "2 hours ago"
+        },
+        {
+          "id": 2,
+          "user": "Reza Rahimi",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "If you want to sell 200 Afs, contact me",
+          "timestamp": "1 hours ago"
+        },
+        {
+          "id": 3,
+          "user": "Siroz",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "I will sell this at 150 Afs",
+          "timestamp": "yesterday"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Car Engine XR-140",
+      "price": 35000,
+      "discount": 10,
+      "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
+      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "comments": []
+    },
+    {
+      "id": 5,
+      "title": "Solar system RS-5000",
+      "price": 35000,
+      "discount": 10,
+      "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
+      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "comments": [
+        {
+          "id": 1,
+          "user": "Ali Aref",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "Nice I want to buy this",
+          "timestamp": "2 hours ago"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Iphone 14 Pro",
+      "price": 35000,
+      "discount": 10,
+      "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
+      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "comments": [
+        {
+          "id": 1,
+          "user": "Ali Aref",
+          "avatar": "../assets/temp/profile.png",
+          "comment": "Nice I want to buy this",
+          "timestamp": "2 hours ago"
+        }
       ]
     }
   ]
