@@ -18,8 +18,8 @@ export default function AuthStack() {
             <Box w="full" alignItems="center">
               <Image
                 mt="24"
-                w="250"
-                h="250"
+                w="150"
+                h="150"
                 alt="logo"
                 resizeMode="contain"
                 source={require("../assets/logo1.png")}
