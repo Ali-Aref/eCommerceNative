@@ -109,10 +109,10 @@ const CustomTabBarButton = (props: any) => {
 const style = StyleSheet.create({
   homeTabsStyle: {
     position: "absolute",
-    borderRadius: 10,
-    borderTopWidth: 0,
-    // borderWidth: 0,
-    // shadowColor: "white",
+    borderRadius: 20,
+    // borderTopWidth: 0,
+    // borderWidth: 2,
+    shadowColor: colors.primary[900],
     bottom: 10,
     right: 10,
     left: 10,
