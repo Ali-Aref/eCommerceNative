@@ -10,10 +10,23 @@
     "avatar": "./app/assets/temp/profile.png"
   },
   "shoppingCard": [
-    { "product": 1, "count": 3 },
-    { "product": 3, "count": 1 }
+    {
+      "product": 1,
+      "count": 3
+    },
+    {
+      "product": 3,
+      "count": 1
+    }
   ],
-  "wishList": [{ "product": 2 }, { "product": 4 }],
+  "wishList": [
+    {
+      "product": 2
+    },
+    {
+      "product": 4
+    }
+  ],
   "posts": [
     {
       "id": 1,
@@ -21,7 +34,10 @@
       "price": 250,
       "discount": 10,
       "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
-      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "images": [
+        "../assets/temp/post.jpg",
+        "../assets/temp/post1.png"
+      ],
       "comments": [
         {
           "id": 1,
@@ -52,7 +68,10 @@
       "price": 250,
       "discount": 10,
       "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
-      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "images": [
+        "../assets/temp/post.jpg",
+        "../assets/temp/post1.png"
+      ],
       "comments": [
         {
           "id": 1,
@@ -83,7 +102,10 @@
       "price": 7500,
       "discount": 10,
       "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
-      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "images": [
+        "../assets/temp/post.jpg",
+        "../assets/temp/post1.png"
+      ],
       "comments": [
         {
           "id": 1,
@@ -114,7 +136,10 @@
       "price": 35000,
       "discount": 10,
       "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
-      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "images": [
+        "../assets/temp/post.jpg",
+        "../assets/temp/post1.png"
+      ],
       "comments": []
     },
     {
@@ -123,7 +148,10 @@
       "price": 35000,
       "discount": 10,
       "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
-      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "images": [
+        "../assets/temp/post.jpg",
+        "../assets/temp/post1.png"
+      ],
       "comments": [
         {
           "id": 1,
@@ -140,7 +168,10 @@
       "price": 35000,
       "discount": 10,
       "description": "Nisi irure nostrud voluptate adipisicing cupidatat qui laboris mollit irure proident ut laborum.",
-      "images": ["../assets/temp/post.jpg", "../assets/temp/post1.png"],
+      "images": [
+        "../assets/temp/post.jpg",
+        "../assets/temp/post1.png"
+      ],
       "comments": [
         {
           "id": 1,
