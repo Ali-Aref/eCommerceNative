@@ -1,9 +1,20 @@
-import { Box, Flex, HStack, Icon, Image, Text } from "native-base";
-import { AntDesign } from "@expo/vector-icons";
-import { FlatList, Pressable } from "react-native";
+import {
+  Avatar,
+  Box,
+  Flex,
+  HStack,
+  Icon,
+  IconButton,
+  Image,
+  Menu,
+  Text,
+} from "native-base";
+import { AntDesign, Feather } from "@expo/vector-icons";
+import { FlatList, Pressable, StyleSheet } from "react-native";
 import { useState } from "react";
 import { NavigationProp } from "@react-navigation/native";
 import ZoomableImage from "./ZoomableImage";
+import { ImageBackground } from "react-native";
 
 const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const [like, setLike] = useState({
@@ -35,15 +46,55 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
           >
             <Image
               source={require("../assets/temp/post.jpg")}
-              h="250"
+              // source={require("../assets/temp/post2.png")}
+              h="280"
               w={"388"}
               alt="post-img"
               borderTopRadius={"md"}
             />
+            <Box
+              h={8}
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+              flexDirection={"row"}
+              alignItems="center"
+              borderRadius={"full"}
+              position="absolute"
+              top={"2"}
+              left={"2"}
+            >
+              <Avatar
+                size={"sm"}
+                source={require("../assets/temp/profile2.jpg")}
+                shadow="4"
+              />
+              <Text mx="2" color={"black"} fontSize={"sm"}>
+                Mohammad Ali Sultani
+              </Text>
+            </Box>
+            <Box top={"3"} right={"3"} position={"absolute"}>
+              <Menu
+                trigger={(triggerProps) => {
+                  return (
+                    <Pressable
+                      accessibilityLabel="More options menu"
+                      {...triggerProps}
+                    >
+                      <Icon color={"black"} size={"md"} as={<Feather name="more-horizontal" />} />
+                    </Pressable>
+                  );
+                }}
+              >
+                <Menu.Item isDisabled>Edit</Menu.Item>
+                <Menu.Item>Share</Menu.Item>
+                <Menu.Item>Report</Menu.Item>
+              </Menu>
+            </Box>
           </Pressable>
         )}
       />
       <Box p={4}>
+        <Flex></Flex>
+
         <Flex
           flexDir={"row"}
           alignItems="center"
@@ -82,7 +133,7 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
           3 days ago
         </Text>
         <Pressable onPress={() => navigation.navigate("UserPostDetails")}>
-          <HStack space={2} alignItems={"center"} mt={4}>
+          <HStack space={2} alignItems={"center"} mt={2}>
             <Text fontSize="lg" fontWeight="bold">
               Post Title
             </Text>
@@ -101,3 +152,10 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
 };
 
 export default UserPost;
+
+const style = StyleSheet.create({
+  postMeida: {
+    borderRadius: 10,
+    display: "none",
+  },
+});

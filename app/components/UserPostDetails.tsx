@@ -13,10 +13,13 @@ import {
 } from "native-base";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import Comment from "./comment";
-import ZoomableImage from "./ZoomableImage";
 import { NavigationProp } from "@react-navigation/native";
 
-const UserPostDetails = ({ navigation }: { navigation: NavigationProp<any> }) => {
+const UserPostDetails = ({
+  navigation,
+}: {
+  navigation: NavigationProp<any>;
+}) => {
   const { width } = useWindowDimensions();
 
   const [like, setLike] = useState({ liked: false, count: 0 });
@@ -39,9 +42,13 @@ const UserPostDetails = ({ navigation }: { navigation: NavigationProp<any> }) =>
         showsHorizontalScrollIndicator={false}
         data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
         renderItem={(item) => (
-          <Pressable onPress={() => navigation.navigate("ImageCloseUp", {
-            src: require("../assets/temp/post.jpg")
-          })}>
+          <Pressable
+            onPress={() =>
+              navigation.navigate("ImageCloseUp", {
+                src: require("../assets/temp/post.jpg"),
+              })
+            }
+          >
             <Image
               source={require("../assets/temp/post.jpg")}
               h="250"
@@ -98,7 +105,7 @@ const UserPostDetails = ({ navigation }: { navigation: NavigationProp<any> }) =>
   );
 
   return (
-    <Flex rounded="md" flex="1">
+    <Flex rounded="md" flex="1" justifyContent={"space-between"}>
       <FlatList
         data={[{ key: 1 }, { key: 2 }, { key: 3 }]}
         ListHeaderComponent={Header}
@@ -110,8 +117,9 @@ const UserPostDetails = ({ navigation }: { navigation: NavigationProp<any> }) =>
             commentText={"Nice post"}
           />
         )}
+        // ListFooterComponent={}
       />
-      <HStack px="3" space={2} my="2">
+      <HStack px="3" space={2} my="2" mb={20}>
         <Input flex="1" placeholder="Add new comment" textAlign={"left"} />
         <IconButton
           variant={"solid"}
