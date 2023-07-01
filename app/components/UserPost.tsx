@@ -4,21 +4,19 @@ import {
   Flex,
   HStack,
   Icon,
-  IconButton,
   Image,
   Menu,
   Text,
+  VStack,
 } from "native-base";
-import { AntDesign, Feather } from "@expo/vector-icons";
-import { FlatList, Pressable, StyleSheet } from "react-native";
+import { AntDesign, Feather, FontAwesome } from "@expo/vector-icons";
+import { FlatList, Pressable } from "react-native";
 import { useState } from "react";
 import { NavigationProp } from "@react-navigation/native";
-import ZoomableImage from "./ZoomableImage";
-import { ImageBackground } from "react-native";
 
 const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const [like, setLike] = useState({
-    count: 5,
+    count: 50,
     liked: false,
   });
   const handleLike = () => {
@@ -47,100 +45,131 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
             <Image
               source={require("../assets/temp/post.jpg")}
               // source={require("../assets/temp/post2.png")}
-              h="280"
-              w={"388"}
+              h={280}
+              w={388}
               alt="post-img"
               borderTopRadius={"md"}
             />
-            <Box
-              h={8}
-              style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
-              flexDirection={"row"}
-              alignItems="center"
-              borderRadius={"full"}
-              position="absolute"
-              top={"2"}
-              left={"2"}
-            >
-              <Avatar
-                size={"sm"}
-                source={require("../assets/temp/profile2.jpg")}
-                shadow="4"
-              />
-              <Text mx="2" color={"black"} fontSize={"sm"}>
-                Mohammad Ali Sultani
-              </Text>
-            </Box>
-            <Box top={"3"} right={"3"} position={"absolute"}>
-              <Menu
-                trigger={(triggerProps) => {
-                  return (
-                    <Pressable
-                      accessibilityLabel="More options menu"
-                      {...triggerProps}
-                    >
-                      <Icon color={"black"} size={"md"} as={<Feather name="more-horizontal" />} />
-                    </Pressable>
-                  );
-                }}
-              >
-                <Menu.Item isDisabled>Edit</Menu.Item>
-                <Menu.Item>Share</Menu.Item>
-                <Menu.Item>Report</Menu.Item>
-              </Menu>
-            </Box>
           </Pressable>
         )}
       />
+      {/* start post sliders */}
+      <Text
+        position={"absolute"}
+        top={1}
+        right={2}
+        fontSize="xs"
+        color={"gray.800"}
+      >
+        1/3
+      </Text>
+      <HStack
+        space={0.5}
+        position="absolute"
+        px="2"
+        top={280 - 12}
+        w="full"
+        justifyContent={"center"}
+      >
+        <Box h="2" w="2" bg="primary.600" borderRadius={"full"} />
+        <Box h="2" w="2" bg="gray.400" borderRadius={"full"} />
+      </HStack>
+      {/* end post sliders */}
       <Box p={4}>
-        <Flex></Flex>
-
+        <Flex justifyContent={"space-between"} flexDirection="row">
+          <Box
+            style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+            flexDirection={"row"}
+            alignItems="center"
+            borderRadius={"full"}
+          >
+            <Avatar
+              size={"sm"}
+              source={require("../assets/temp/profile2.jpg")}
+              shadow="4"
+            />
+            <VStack>
+              <Text mx="2" color={"black"} fontSize={"sm"} fontWeight="bold">
+                Mohammad Ali Sultani
+              </Text>
+              <Text mx="2" color={"gray.500"} fontSize={"xs"}>
+                3 days ago
+              </Text>
+            </VStack>
+          </Box>
+          <Menu
+            placement="left bottom"
+            trigger={(triggerProps) => {
+              return (
+                <Pressable
+                  accessibilityLabel="More options menu"
+                  {...triggerProps}
+                >
+                  <Icon
+                    color={"black"}
+                    size={"md"}
+                    as={<Feather name="more-horizontal" />}
+                  />
+                </Pressable>
+              );
+            }}
+          >
+            <Menu.Item isDisabled>Edit</Menu.Item>
+            <Menu.Item>Share</Menu.Item>
+            <Menu.Item>Report</Menu.Item>
+          </Menu>
+        </Flex>
         <Flex
-          flexDir={"row"}
-          alignItems="center"
+          flexDirection={"row"}
           justifyContent="space-between"
+          alignItems={"center"}
+          mt={2}
         >
-          <HStack mt={2}>
-            <Pressable onPress={handleLike}>
+          <Pressable
+            onPress={() => navigation.navigate("UserPostDetails")}
+            style={{ flex: 0.70}}
+          >
+            <Text
+              fontSize="lg"
+              fontWeight="bold"
+              color="gray.700"
+              noOfLines={2}
+            >
+              Post Title
+              <Box w={2}></Box>
+              <Text fontWeight="semibold" color="gray.500" fontSize={"md"}>
+                250 AF
+              </Text>
+            </Text>
+          </Pressable>
+          <HStack space={3} flex={0.3} justifyContent={"flex-end"}>
+            <HStack>
+              <Pressable onPress={handleLike}>
+                <Icon
+                  as={AntDesign}
+                  name="heart"
+                  size={5}
+                  color={like.liked ? "red.600" : "gray.300"}
+                />
+              </Pressable>
+              <Text ml={1} fontSize="sm" color="gray.500">
+                {like.count}
+              </Text>
+            </HStack>
+            <HStack space={1}>
               <Icon
-                as={AntDesign}
-                name="heart"
+                as={FontAwesome}
+                name="comment"
                 size={5}
-                color={like.liked ? "red.600" : "gray.300"}
+                color={"gray.300"}
               />
-            </Pressable>
-            <Text ml={1} fontSize="sm" color="gray.500">
-              {like.count}
-            </Text>
-            <Text ml={1} fontSize="sm" color="gray.500">
-              Like
-            </Text>
-          </HStack>
-          <HStack space={0.5}>
-            <Box h="2" w="2" bg="primary.600" borderRadius={"full"} />
-            <Box h="2" w="2" bg="gray.400" borderRadius={"full"} />
-          </HStack>
-          <HStack mt="2" space={1}>
-            <Text fontSize="sm" color="gray.500">
-              3
-            </Text>
-            <Text fontSize="sm" color="gray.500">
-              Comments
-            </Text>
+              <Text fontSize="sm" color="gray.500">
+                301
+              </Text>
+            </HStack>
           </HStack>
         </Flex>
-        <Text fontSize="sm" color="gray.500" mt={2} textAlign="left">
-          3 days ago
-        </Text>
         <Pressable onPress={() => navigation.navigate("UserPostDetails")}>
-          <HStack space={2} alignItems={"center"} mt={2}>
-            <Text fontSize="lg" fontWeight="bold">
-              Post Title
-            </Text>
-            <Text fontWeight="semibold" color="gray.500">
-              250 AF
-            </Text>
-          </HStack>
           <Text fontSize="md" mt={2} numberOfLines={2} textAlign="left">
             This is the post description. Lorem ipsum dolor sit amet,
             consectetur adipiscing elit.
@@ -152,10 +181,3 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
 };
 
 export default UserPost;
-
-const style = StyleSheet.create({
-  postMeida: {
-    borderRadius: 10,
-    display: "none",
-  },
-});
