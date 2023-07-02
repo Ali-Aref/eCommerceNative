@@ -17,7 +17,7 @@ import { FlatList, Pressable } from "react-native";
 import { useState } from "react";
 import { NavigationProp } from "@react-navigation/native";
 
-const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
+const Post = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [like, setLike] = useState({
     count: 50,
@@ -181,7 +181,7 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
   );
 };
 
-export default UserPost;
+export default Post;
 
 // installed this
 // npx expo install react-native-web@~0.18.10 @expo/webpack-config@^18.0.1

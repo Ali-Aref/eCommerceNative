@@ -11,7 +11,7 @@ import {
   Text,
 } from "native-base";
 import React, { useRef } from "react";
-import UserPost from "../components/UserPost";
+import Post from "../components/Post";
 import { FlatList, ImageBackground } from "react-native";
 import i18n from "../i18/i18n";
 import { NavigationProp } from "@react-navigation/native";
@@ -98,7 +98,7 @@ const UserProfile = ({ navigation }: { navigation: NavigationProp<any> }) => {
       ListHeaderComponent={Header}
       ListFooterComponent={<Box mb={20}></Box>}
       showsVerticalScrollIndicator={false}
-      renderItem={() => <UserPost navigation={navigation} />}
+      renderItem={() => <Post navigation={navigation} />}
     />
   );
 };
