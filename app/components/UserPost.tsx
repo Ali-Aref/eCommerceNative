@@ -4,8 +4,10 @@ import {
   Flex,
   HStack,
   Icon,
+  IconButton,
   Image,
   Menu,
+  Modal,
   Text,
   VStack,
 } from "native-base";
@@ -15,6 +17,7 @@ import { useState } from "react";
 import { NavigationProp } from "@react-navigation/native";
 
 const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [like, setLike] = useState({
     count: 50,
     liked: false,
@@ -76,20 +79,20 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
       </HStack>
       {/* end post sliders */}
       <Box p={4}>
-        <Flex justifyContent={"space-between"} flexDirection="row">
-          <Box
-            style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
-            flexDirection={"row"}
-            alignItems="center"
-            borderRadius={"full"}
-          >
+        <HStack
+          justifyContent={"space-between"}
+          alignItems="center"
+          // flexDirection="row"
+          // bg="primary.200"
+        >
+          <Box flexDirection={"row"} alignItems="center">
             <Avatar
               size={"sm"}
               source={require("../assets/temp/profile2.jpg")}
               shadow="4"
             />
-            <VStack>
-              <Text mx="2" color={"black"} fontSize={"sm"} fontWeight="bold">
+            <VStack alignItems={"flex-start"}>
+              <Text mx="2" fontSize={"md"} fontWeight="bold">
                 Mohammad Ali Sultani
               </Text>
               <Text mx="2" color={"gray.500"} fontSize={"xs"}>
@@ -97,52 +100,36 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
               </Text>
             </VStack>
           </Box>
-          <Menu
-            placement="left bottom"
-            trigger={(triggerProps) => {
-              return (
-                <Pressable
-                  accessibilityLabel="More options menu"
-                  {...triggerProps}
-                >
-                  <Icon
-                    color={"black"}
-                    size={"md"}
-                    as={<Feather name="more-horizontal" />}
-                  />
-                </Pressable>
-              );
-            }}
-          >
-            <Menu.Item isDisabled>Edit</Menu.Item>
-            <Menu.Item>Share</Menu.Item>
-            <Menu.Item>Report</Menu.Item>
-          </Menu>
-        </Flex>
+          <Modal isOpen={showMoreMenu} onClose={() => setShowMoreMenu(false)}>
+            <Modal.Content maxWidth={400}>
+              <Modal.Body>
+                <Menu.Item>Edit</Menu.Item>
+                <Menu.Item>Update</Menu.Item>
+                <Menu.Item>Report</Menu.Item>
+                <Menu.Item>Share</Menu.Item>
+              </Modal.Body>
+            </Modal.Content>
+          </Modal>
+          <IconButton
+            onPress={() => setShowMoreMenu(true)}
+            icon={<Feather name="more-horizontal" />}
+          />
+        </HStack>
         <Flex
           flexDirection={"row"}
           justifyContent="space-between"
-          alignItems={"center"}
+          // alignItems={"center"}
           mt={2}
         >
-          <Pressable
-            onPress={() => navigation.navigate("UserPostDetails")}
-            style={{ flex: 0.70}}
-          >
-            <Text
-              fontSize="lg"
-              fontWeight="bold"
-              color="gray.700"
-              noOfLines={2}
-            >
-              Post Title
-              <Box w={2}></Box>
-              <Text fontWeight="semibold" color="gray.500" fontSize={"md"}>
-                250 AF
-              </Text>
+          <HStack space={1}>
+            <Text fontWeight="semibold" color="gray.500" fontSize={"md"}>
+              5000
             </Text>
-          </Pressable>
-          <HStack space={3} flex={0.3} justifyContent={"flex-end"}>
+            <Text fontWeight="semibold" color="gray.500" fontSize={"md"}>
+              ؋
+            </Text>
+          </HStack>
+          <HStack space={3} position="absolute" right="0">
             <HStack>
               <Pressable onPress={handleLike}>
                 <Icon
@@ -169,6 +156,15 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
             </HStack>
           </HStack>
         </Flex>
+        <Text
+          fontSize="lg"
+          fontWeight="bold"
+          color="gray.700"
+          noOfLines={2}
+          textAlign="left"
+        >
+          Lorem ipsum dolor sit amet
+        </Text>
         <Pressable onPress={() => navigation.navigate("UserPostDetails")}>
           <Text fontSize="md" mt={2} numberOfLines={2} textAlign="left">
             This is the post description. Lorem ipsum dolor sit amet,
