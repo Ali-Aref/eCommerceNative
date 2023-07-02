@@ -2,7 +2,8 @@ import { Feather } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Button, HStack, Icon, IconButton, Menu, Pressable } from "native-base";
 import React from "react";
-import ImageCloseup from "../components/ImageCloseup";
+// import ImageCloseup from "../componpsts/ImageCloseup";
+import PostMedias from "../screens/PostMedias";
 // import UserPostDetails from "../components/UserPostDetails";
 import PostDetails from "../screens/PostDetails";
 import UserProfile from "../screens/UserProfile";
@@ -28,8 +29,8 @@ export const ProfileStack = () => {
         }}
       />
       <Stack.Screen
-        name="ImageCloseUp"
-        component={ImageCloseup}
+        name="PostMedias"
+        component={PostMedias}
         options={({ route }) => ({
           title: "",
           headerRight(props) {
