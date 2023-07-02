@@ -47,8 +47,8 @@ const ZoomableImage = ({
               transform: [{ scale }],
               width: width,
               height: 250,
-              borderTopRightRadius: 8,
-              borderTopLeftRadius: 8,
+              // borderTopRightRadius: 8,
+              // borderTopLeftRadius: 8,
               ...style,
             }}
             alt="img"
