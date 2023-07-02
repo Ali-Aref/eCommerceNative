@@ -23,8 +23,8 @@ export const ProfileStack = () => {
         name="PostDetails"
         component={PostDetails}
         options={{
-          title: "",
-          headerShown: false,
+          title: "Details",
+          // headerShown: false,
         }}
       />
       <Stack.Screen

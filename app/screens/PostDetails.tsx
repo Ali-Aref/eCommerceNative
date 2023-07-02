@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import { FlatList, useWindowDimensions } from "react-native";
 import {
+    Avatar,
   Box,
+  Button,
   Flex,
   HStack,
   Icon,
   IconButton,
   Image,
   Input,
+  Modal,
   Pressable,
   Text,
+  VStack,
 } from "native-base";
-import { AntDesign, Feather } from "@expo/vector-icons";
+import { AntDesign, Feather, FontAwesome } from "@expo/vector-icons";
 import Comment from "../components/comment";
 import { NavigationProp } from "@react-navigation/native";
 
-const PostDetails = ({
-  navigation,
-}: {
-  navigation: NavigationProp<any>;
-}) => {
+const PostDetails = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const { width } = useWindowDimensions();
-
+  
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [like, setLike] = useState({ liked: false, count: 0 });
 
   const handleLike = () => {
@@ -46,60 +47,115 @@ const PostDetails = ({
             onPress={() =>
               navigation.navigate("ImageCloseUp", {
                 src: require("../assets/temp/post.jpg"),
-              })
-            }
+              })}
           >
             <Image
               source={require("../assets/temp/post.jpg")}
               h="250"
               w={width}
               alt="post-img"
-              borderTopRadius={"md"}
             />
           </Pressable>
         )}
       />
-      <Box px="4">
-        <Flex flexDir="row" alignItems="center" justifyContent="space-between">
-          <HStack mt={2}>
-            <Pressable onPress={handleLike}>
-              <Icon
-                as={AntDesign}
-                name="heart"
-                size={5}
-                color={like.liked ? "red.600" : "gray.300"}
-              />
-            </Pressable>
-            <Text ml={1} fontSize="sm" color="gray.500">
-              {like.count} likes
+      <Box px="4" mt="2">
+        <HStack justifyContent={"space-between"} alignItems="center">
+          <Box flexDirection={"row"} alignItems="center">
+            <Avatar
+              size={"sm"}
+              source={require("../assets/temp/profile2.jpg")}
+              shadow="4"
+            />
+            <VStack alignItems={"flex-start"}>
+              <Text mx="2" fontSize={"md"} fontWeight="bold">
+                Mohammad Ali Sultani
+              </Text>
+              <Text mx="2" color={"gray.500"} fontSize={"xs"}>
+                3 days ago
+              </Text>
+            </VStack>
+          </Box>
+          <Modal isOpen={showMoreMenu} onClose={() => setShowMoreMenu(false)}>
+            <Modal.Content maxWidth={400}>
+              <Modal.Body>
+                <Button variant={"ghost"} justifyContent="flex-start">
+                  Edit
+                </Button>
+                <Button variant={"ghost"} justifyContent="flex-start">
+                  Updated
+                </Button>
+                <Button variant={"ghost"} justifyContent="flex-start">
+                  Share
+                </Button>
+                <Button variant={"ghost"} justifyContent="flex-start">
+                  Report
+                </Button>
+              </Modal.Body>
+            </Modal.Content>
+          </Modal>
+
+          <IconButton
+            onPress={() => setShowMoreMenu(true)}
+            icon={<Icon icon={<Feather name="more-horizontal" />} />}
+          />
+        </HStack>
+        <Flex
+          flexDirection={"row"}
+          justifyContent="space-between"
+          // alignItems={"center"}
+          mt={2}
+        >
+          <HStack space={1}>
+            <Text fontWeight="semibold" color="gray.500" fontSize={"md"}>
+              5000
+            </Text>
+            <Text fontWeight="semibold" color="gray.500" fontSize={"md"}>
+              ؋
             </Text>
           </HStack>
-          <HStack space={0.5}>
-            <Box h="2" w="2" bg="primary.600" borderRadius="full" />
-            <Box h="2" w="2" bg="gray.400" borderRadius="full" />
+          <HStack space={3} position="absolute" right="0">
+            <HStack>
+              <Pressable onPress={handleLike}>
+                <Icon
+                  as={AntDesign}
+                  name="heart"
+                  size={5}
+                  color={like.liked ? "red.600" : "gray.300"}
+                />
+              </Pressable>
+              <Text ml={1} fontSize="sm" color="gray.500">
+                {like.count}
+              </Text>
+            </HStack>
+            <HStack space={1}>
+              <Icon
+                as={FontAwesome}
+                name="comment"
+                size={5}
+                color={"gray.300"}
+              />
+              <Text fontSize="sm" color="gray.500">
+                301
+              </Text>
+            </HStack>
           </HStack>
-          <Text fontSize="sm" color="gray.500" mt={2}>
-            3 comments
-          </Text>
         </Flex>
-        <Text fontSize="sm" color={"gray.500"} mt={2} textAlign="left">
-          3 days ago
+        <Text
+          fontSize="lg"
+          fontWeight="bold"
+          color="gray.700"
+          noOfLines={2}
+          textAlign="left"
+        >
+          Lorem ipsum dolor sit amet
         </Text>
-        <HStack space={2} alignItems="center" mt={4}>
-          <Text fontSize="lg" fontWeight="bold">
-            Post {1} Title
+        <Pressable onPress={() => navigation.navigate("PostDetails")}>
+          <Text fontSize="md" mt={2} numberOfLines={2} textAlign="left">
+            This is the post description. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit.
           </Text>
-          <Text fontWeight="semibold" color="gray.500">
-            250 AF
-          </Text>
-        </HStack>
-        <Text fontSize="md" mt={2} numberOfLines={2} textAlign="left">
-          This is the post description. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit.
-        </Text>
-        <Text my="2" fontWeight={"semibold"} fontSize="lg" textAlign={"left"}>
-          Comments
-        </Text>
+        </Pressable>
+      <Text mt={4} fontSize="lg" fontWeight={"bold"}>Comments</Text>
       </Box>
     </Box>
   );
