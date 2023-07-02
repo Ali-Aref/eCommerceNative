@@ -170,7 +170,7 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
         >
           Lorem ipsum dolor sit amet
         </Text>
-        <Pressable onPress={() => navigation.navigate("UserPostDetails")}>
+        <Pressable onPress={() => navigation.navigate("PostDetails")}>
           <Text fontSize="md" mt={2} numberOfLines={2} textAlign="left">
             This is the post description. Lorem ipsum dolor sit amet,
             consectetur adipiscing elit.

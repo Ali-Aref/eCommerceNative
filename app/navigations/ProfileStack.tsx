@@ -3,7 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Button, HStack, Icon, IconButton, Menu, Pressable } from "native-base";
 import React from "react";
 import ImageCloseup from "../components/ImageCloseup";
-import UserPostDetails from "../components/UserPostDetails";
+// import UserPostDetails from "../components/UserPostDetails";
+import PostDetails from "../screens/PostDetails";
 import UserProfile from "../screens/UserProfile";
 
 const Stack = createStackNavigator();
@@ -19,8 +20,8 @@ export const ProfileStack = () => {
         }}
       />
       <Stack.Screen
-        name="UserPostDetails"
-        component={UserPostDetails}
+        name="PostDetails"
+        component={PostDetails}
         options={{
           title: "",
           headerShown: false,
