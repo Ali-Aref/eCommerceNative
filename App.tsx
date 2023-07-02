@@ -16,7 +16,6 @@ import ForgotPassword from "./app/screens/ForgotPassword";
 import VerificationCode from "./app/screens/VerficationCode";
 import ResetPassword from "./app/screens/ResetPassword";
 import AuthStack from "./app/navigations/AuthStack";
-import ImageCloseup from "./app/components/ImageCloseup";
 
 export default function App() {
   const { languageCode, isRtl } = useLocale();
@@ -31,7 +30,6 @@ export default function App() {
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
         {/*
-        <ImageCloseup />
         */}
         <AuthStack />
       </NavigationContainer>

@@ -45,7 +45,7 @@ const PostDetails = ({ navigation }: { navigation: NavigationProp<any> }) => {
         renderItem={(item) => (
           <Pressable
             onPress={() =>
-              navigation.navigate("ImageCloseUp", {
+              navigation.navigate("PostMedias", {
                 src: require("../assets/temp/post.jpg"),
               })}
           >
