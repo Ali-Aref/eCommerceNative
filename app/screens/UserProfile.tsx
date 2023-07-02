@@ -15,7 +15,6 @@ import Post from "../components/Post";
 import { FlatList, ImageBackground } from "react-native";
 import i18n from "../i18/i18n";
 import { NavigationProp } from "@react-navigation/native";
-import ImageCloseup from "../components/ImageCloseup";
 
 const UserProfile = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const Header = (
