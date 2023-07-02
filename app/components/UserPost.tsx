@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  Button,
   Flex,
   HStack,
   Icon,
@@ -43,7 +44,8 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
             onPress={() =>
               navigation.navigate("ImageCloseUp", {
                 src: require("../assets/temp/post.jpg"),
-              })}
+              })
+            }
           >
             <Image
               source={require("../assets/temp/post.jpg")}
@@ -74,17 +76,11 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
         w="full"
         justifyContent={"center"}
       >
-        <Box h="2" w="2" bg="primary.600" borderRadius={"full"} />
         <Box h="2" w="2" bg="gray.400" borderRadius={"full"} />
       </HStack>
       {/* end post sliders */}
       <Box p={4}>
-        <HStack
-          justifyContent={"space-between"}
-          alignItems="center"
-          // flexDirection="row"
-          // bg="primary.200"
-        >
+        <HStack justifyContent={"space-between"} alignItems="center">
           <Box flexDirection={"row"} alignItems="center">
             <Avatar
               size={"sm"}
@@ -103,16 +99,25 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
           <Modal isOpen={showMoreMenu} onClose={() => setShowMoreMenu(false)}>
             <Modal.Content maxWidth={400}>
               <Modal.Body>
-                <Menu.Item>Edit</Menu.Item>
-                <Menu.Item>Update</Menu.Item>
-                <Menu.Item>Report</Menu.Item>
-                <Menu.Item>Share</Menu.Item>
+                <Button variant={"ghost"} justifyContent="flex-start">
+                  Edit
+                </Button>
+                <Button variant={"ghost"} justifyContent="flex-start">
+                  Updated
+                </Button>
+                <Button variant={"ghost"} justifyContent="flex-start">
+                  Share
+                </Button>
+                <Button variant={"ghost"} justifyContent="flex-start">
+                  Report
+                </Button>
               </Modal.Body>
             </Modal.Content>
           </Modal>
+
           <IconButton
             onPress={() => setShowMoreMenu(true)}
-            icon={<Feather name="more-horizontal" />}
+            icon={<Icon icon={<Feather name="more-horizontal" />} />}
           />
         </HStack>
         <Flex
@@ -177,3 +182,6 @@ const UserPost = ({ navigation }: { navigation: NavigationProp<any> }) => {
 };
 
 export default UserPost;
+
+// installed this
+// npx expo install react-native-web@~0.18.10 @expo/webpack-config@^18.0.1
