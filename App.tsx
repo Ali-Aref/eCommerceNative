@@ -1,8 +1,10 @@
 import "react-native-gesture-handler";
 import React, { useEffect } from "react";
+import LogBoxUpdated from "./app/help/disableLogs";
 import { I18nManager, Platform, SafeAreaView, StyleSheet } from "react-native";
 import { NativeBaseProvider, StatusBar } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from "react-query";
 import theme from "./theme";
 
 import Login from "./app/screens/Login";
@@ -17,6 +19,9 @@ import VerificationCode from "./app/screens/VerficationCode";
 import ResetPassword from "./app/screens/ResetPassword";
 import AuthStack from "./app/navigations/AuthStack";
 
+const queryClient = new QueryClient();
+LogBoxUpdated // to activate the LogBox Updated Logs
+
 export default function App() {
   const { languageCode, isRtl } = useLocale();
 
@@ -27,13 +32,15 @@ export default function App() {
   // }, [languageCode]);
 
   return (
-    <NativeBaseProvider theme={theme}>
-      <NavigationContainer>
-        {/*
-        */}
-        <AuthStack />
-      </NavigationContainer>
-    </NativeBaseProvider>
+    <QueryClientProvider client={queryClient}>
+      <NativeBaseProvider theme={theme}>
+        <NavigationContainer>
+          {/*
+           */}
+          <AuthStack />
+        </NavigationContainer>
+      </NativeBaseProvider>
+    </QueryClientProvider>
   );
 }
 
